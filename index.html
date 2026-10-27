@@ -1,0 +1,1560 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>政黨認同與大罷免偏好｜研討會投影片</title>
+<meta name="description" content="檢驗政策態度的中介效果；林文正。13 頁日系樣式、固定 16:9 的離線互動發表稿。">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>/* 政黨認同與大罷免偏好 — 日系公共資訊站（kiosk）
+   視覺系統沿用 japan-report-style：冰藍漸層底、明朝體、五色節點、單頁顯示。
+   資料圖形改用加深後的同色系（--c*t），以通過對比下限；明亮原色只留給識別色點。 */
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#E7EFF4;
+  --bg-sheen:#F2F7FA;
+  --panel:#FDFEFF;
+  --panel-sunk:#EDF3F7;
+  --border:#D5DEE5;
+  --border-dark:#8FA3B0;
+  --text:#3A3F45;
+  --muted:#586874;          /* 原 #7A8894 對比僅 3.12:1，加深至 4.95:1 */
+
+  /* 識別色點（僅用於色點、節點、頁首圓標） */
+  --c1:#00A99D; --c2:#7B2D8B; --c3:#F0A500; --c4:#8BBD2D; --c5:#4A90D9;
+  /* 資料圖形與彩色文字（對比 ≥4.5:1） */
+  --c1t:#00726B; --c2t:#7B2D8B; --c3t:#8A5E00; --c4t:#52731A; --c5t:#2A6AAD;
+
+  /* 政黨（藍綠只給政黨） */
+  --green:#2F6B4F; --blue:#2A6AAD; --tpp:#00726B;
+  /* 議題面向 */
+  --k-budget:#8A5E00; --k-cn:#9C3B2E; --k-us:#2A6AAD;
+  /* 正負 */
+  --pos:#2A6AAD; --neg:#9C3B2E;
+
+  --serif:'Noto Serif TC','Songti TC','Source Han Serif TC',serif;
+  --sans:'Noto Sans TC','PingFang TC','Heiti TC',system-ui,sans-serif;
+
+  --pad-x:clamp(20px,4.4vw,64px);
+  --pad-l:clamp(20px,9vw,150px);
+}
+
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--serif);
+  background:linear-gradient(100deg,var(--bg) 0%,var(--bg-sheen) 42%,var(--bg) 78%);
+  background-attachment:fixed;
+  color:var(--text);
+  font-weight:300;
+  letter-spacing:.05em;
+  caret-color:var(--c1t);
+}
+body.kiosk{overflow:hidden;min-height:100vh}
+
+::selection{background:#CFE3EE;color:var(--text)}
+:focus-visible{outline:2px solid var(--c5t);outline-offset:3px}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--panel-sunk)}
+::-webkit-scrollbar-thumb{background:#AEBFCA;border:3px solid var(--panel-sunk);border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#8FA3B0}
+*{scrollbar-color:#AEBFCA var(--panel-sunk);scrollbar-width:thin}
+
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+h1,h2,h3,h4{font-weight:500;letter-spacing:.12em}
+b,strong{font-weight:500}
+q{quotes:"「" "」"}
+p{font-size:15px;font-weight:300;line-height:2.05;letter-spacing:.05em}
+p+p{margin-top:13px}
+.tnum,table td,table th,.stat b,.bar-val,.kv b,.pd-val{font-variant-numeric:tabular-nums}
+
+/* ───────── 單頁（kiosk） ───────── */
+.page{display:none;position:fixed;inset:0;padding:34px var(--pad-x) 54px var(--pad-l);overflow-y:auto;overscroll-behavior:contain}
+.page.active{display:block}
+.page-inner{max-width:1080px;margin:0 auto}
+.page.active .page-inner>*{animation:fade .42s cubic-bezier(.16,.84,.26,1) both}
+.page.active .page-inner>*:nth-child(2){animation-delay:.04s}
+.page.active .page-inner>*:nth-child(3){animation-delay:.08s}
+.page.active .page-inner>*:nth-child(n+4){animation-delay:.11s}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.page.active .page-inner>*{animation:none}*{transition:none!important}}
+
+/* 左側直排導覽 */
+.kiosk-nav{position:fixed;left:24px;bottom:44px;display:flex;flex-direction:column;gap:9px;z-index:100}
+.kiosk-btn{
+  font-family:var(--serif);background:var(--panel);border:1px solid var(--border-dark);
+  color:var(--text);font-size:13px;font-weight:400;letter-spacing:.2em;padding:13px 16px;
+  writing-mode:vertical-rl;min-height:106px;text-align:center;transition:background .15s;
+}
+.kiosk-btn:hover{background:#F0F6FA}
+.kiosk-btn:disabled{opacity:.3;cursor:default}
+.kiosk-rail{position:fixed;left:0;bottom:0;width:100%;height:2px;background:var(--c1);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.16,.84,.26,1);z-index:101}
+
+/* 裝飾：家屋剪影（原模板的 kiosk 記號） */
+.deco{position:fixed;left:40px;top:38px;display:flex;gap:9px;opacity:.14;pointer-events:none;z-index:1}
+.deco i{width:30px;height:36px;border:1.5px solid var(--text);position:relative;clip-path:polygon(0 26%,50% 0,100% 26%,100% 100%,0 100%)}
+.deco i::after{content:"";position:absolute;left:6px;top:13px;width:6px;height:6px;border:1px solid var(--text);
+  box-shadow:11px 0 0 -.5px var(--text),0 10px 0 -.5px var(--text),11px 10px 0 -.5px var(--text)}
+
+/* ───────── 首頁 ───────── */
+.home{text-align:center;padding-top:4vh}
+.home .hint{font-size:12px;color:var(--muted);letter-spacing:.28em;margin-bottom:10px}
+.home h1{font-size:clamp(23px,3vw,34px);font-weight:600;line-height:1.72;letter-spacing:.08em;max-width:830px;margin:0 auto 10px}
+.home .sub{font-size:clamp(13px,1.4vw,16px);color:var(--c1t);letter-spacing:.16em;margin-bottom:18px}
+.home-meta{font-size:12px;color:var(--muted);letter-spacing:.1em;display:flex;justify-content:center;flex-wrap:wrap;gap:8px 26px;margin-bottom:3vh}
+.timeline{position:relative;display:flex;align-items:center;justify-content:space-between;padding:52px 12px;max-width:1000px;margin:0 auto}
+.timeline::before{content:"";position:absolute;top:50%;left:0;right:0;height:1px;background:var(--border-dark);opacity:.55}
+.tl-node{display:flex;flex-direction:column;align-items:center;flex:1;text-align:center;font-family:var(--serif)}
+.tl-top{font-size:14px;font-weight:500;letter-spacing:.14em;margin-bottom:15px;line-height:1.4}
+.tl-dot{width:26px;height:26px;z-index:1;transition:transform .15s}
+.tl-node:hover .tl-dot,.tl-node:focus-visible .tl-dot{transform:scale(1.25)}
+.tl-bot{font-size:12px;margin-top:15px;max-width:142px;line-height:1.8;font-weight:300;color:var(--muted);letter-spacing:.06em}
+.tl-node:nth-child(1) .tl-dot{background:var(--c5)}
+.tl-node:nth-child(2) .tl-dot{background:var(--c4)}
+.tl-node:nth-child(3) .tl-dot{background:var(--c3)}
+.tl-node:nth-child(4) .tl-dot{background:var(--c2)}
+.tl-node:nth-child(5) .tl-dot{background:var(--c1)}
+.home-foot{font-size:12px;color:var(--muted);letter-spacing:.1em;line-height:2}
+.home-foot kbd{font-family:var(--sans);font-size:12px;border:1px solid var(--border-dark);padding:1px 5px;margin:0 2px}
+
+/* ───────── 頁首 ───────── */
+.page-head{display:flex;align-items:baseline;gap:16px;border-bottom:1px solid var(--border-dark);padding-bottom:13px;margin-bottom:22px}
+.page-dot{width:14px;height:14px;align-self:center;flex:0 0 auto}
+.page-title{font-size:clamp(17px,1.9vw,22px);font-weight:600;letter-spacing:.14em;line-height:1.5}
+.page-num{font-size:12px;color:var(--muted);letter-spacing:.2em;font-family:var(--sans);margin-left:auto;white-space:nowrap}
+.s1 .page-dot{background:var(--c5)}.s2 .page-dot{background:var(--c4)}
+.s3 .page-dot{background:var(--c3)}.s4 .page-dot{background:var(--c2)}
+.s5 .page-dot{background:var(--c1)}
+
+/* ───────── 面板 ───────── */
+.panel{background:var(--panel);border:1px solid var(--border);padding:22px clamp(16px,2.6vw,32px)}
+.panel+.panel,.panel+.stat-strip,.stat-strip+.panel,.panel+.cards,.cards+.panel{margin-top:15px}
+.panel-label{font-size:12px;color:var(--muted);letter-spacing:.22em;margin-bottom:13px;font-family:var(--sans);font-weight:400}
+.lead{font-size:clamp(16px,1.7vw,19px);font-weight:400;line-height:1.95;letter-spacing:.07em}
+.note{font-size:12px;color:var(--muted);line-height:1.85;letter-spacing:.04em}
+.cite{font-size:12px;color:var(--muted);line-height:1.8;letter-spacing:.04em}
+.panel>*+.note,.panel>*+.cite{margin-top:11px}
+.flag{font-size:12px;line-height:1.85;color:var(--text);background:#FBF3E4;border:1px solid #E4CE9B;padding:10px 13px;margin-top:11px;letter-spacing:.04em}
+
+/* 定義列 */
+.kv{display:grid;gap:0}
+.kv>div{display:grid;grid-template-columns:minmax(96px,20%) 1fr;gap:8px 18px;padding:11px 0;border-bottom:1px solid #EAF0F4}
+.kv>div:first-child{padding-top:0}
+.kv>div:last-child{border-bottom:0;padding-bottom:0}
+.kv b{font-size:14px;font-weight:500;letter-spacing:.08em;line-height:1.8}
+.kv p{margin:0;font-size:13.5px;line-height:1.95}
+
+/* 重點數字帶 */
+.stat-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));border:1px solid var(--border);background:var(--panel)}
+.stat{padding:18px 16px;text-align:center;border-left:1px solid var(--border)}
+.stat:first-child{border-left:0}
+.stat b{display:block;font-size:clamp(20px,2.3vw,26px);font-weight:500;margin-bottom:3px;font-family:var(--sans)}
+.stat span{font-size:12px;color:var(--muted);line-height:1.6;display:block;letter-spacing:.05em}
+.stat:nth-child(1) b{color:var(--c5t)}.stat:nth-child(2) b{color:var(--c4t)}
+.stat:nth-child(3) b{color:var(--c3t)}.stat:nth-child(4) b{color:var(--c5t)}
+
+/* 雙欄卡片 */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:15px}
+.card{background:var(--panel);border:1px solid var(--border);padding:20px clamp(16px,2.2vw,26px)}
+.card h3{font-size:14.5px;font-weight:500;letter-spacing:.12em;margin-bottom:11px;padding-bottom:9px;border-bottom:1px solid var(--border)}
+.card p{font-size:13.5px;line-height:1.95}
+.card .src{font-size:12px;color:var(--muted);margin-top:9px;letter-spacing:.04em}
+
+/* 區段索引（圓角按鈕格） */
+.idx-hint{font-size:12px;color:var(--muted);letter-spacing:.22em;margin-bottom:13px}
+.idx-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:10px}
+.idx-btn{background:var(--panel);border:1px solid var(--border);border-radius:17px;font-family:var(--serif);
+  font-size:13.5px;font-weight:400;text-align:left;padding:12px 18px;line-height:1.55;letter-spacing:.08em;
+  transition:background .15s,border-color .15s;display:flex;align-items:baseline;gap:10px}
+.idx-btn:hover{background:#F0F6FA;border-color:var(--border-dark)}
+.idx-btn em{font-family:var(--sans);font-size:12px;color:var(--muted);font-style:normal;flex:0 0 auto;letter-spacing:.1em}
+.idx-btn span{flex:1 1 auto}
+
+/* 區段切換（分段控制） */
+.seg{display:flex;flex-wrap:wrap;gap:7px}
+.seg button{font-family:var(--serif);background:var(--panel);border:1px solid var(--border);
+  font-size:12.5px;letter-spacing:.12em;padding:8px 16px;min-height:36px;color:var(--text);transition:all .16s}
+.seg button:hover{background:#F0F6FA;border-color:var(--border-dark)}
+.seg button[aria-selected=true],.seg button[aria-pressed=true]{background:var(--text);border-color:var(--text);color:var(--panel)}
+.seg-sm button{font-size:12px;padding:6px 12px;min-height:32px;letter-spacing:.08em}
+.ctl-bar{display:flex;flex-wrap:wrap;gap:9px 20px;align-items:center;margin-bottom:15px}
+.ctl-lab{font-size:12px;color:var(--muted);letter-spacing:.2em;font-family:var(--sans)}
+
+/* 純 CSS 橫條圖 */
+.bars{display:grid;gap:11px}
+.bar-row{display:grid;grid-template-columns:minmax(78px,118px) 1fr 46px 58px;align-items:center;gap:10px}
+.bar-lab{font-size:12.5px;text-align:right;line-height:1.4;letter-spacing:.03em}
+.bar-track{background:var(--bg);height:17px;position:relative}
+.bar-fill{display:block;height:100%;width:100%;transform:scaleX(0);
+  transform-origin:left center;transition:transform .5s cubic-bezier(.16,.84,.26,1)}
+.bar-val{font-size:12px;color:var(--text);font-family:var(--sans);text-align:right}
+.bar-beta{font-size:12px;color:var(--muted);font-family:var(--sans);text-align:right}
+.bar-row.ns .bar-fill{opacity:.4}
+.bar-row.top .bar-lab{font-weight:500}
+.f-green{background:var(--green)}.f-blue{background:var(--blue)}.f-tpp{background:var(--tpp)}
+.f-c1{background:var(--c1t)}.f-c3{background:var(--c3t)}.f-c5{background:var(--c5t)}
+.f-budget{background:var(--k-budget)}.f-cn{background:var(--k-cn)}.f-us{background:var(--k-us)}
+.chart-src{font-size:12px;color:var(--muted);margin-top:14px;letter-spacing:.05em;line-height:1.75}
+.chart-title{font-size:12.5px;color:var(--muted);letter-spacing:.1em;margin-bottom:17px;line-height:1.7}
+
+/* 雙欄：圖＋詮釋 */
+.split{display:grid;grid-template-columns:1.12fr 1fr;gap:15px;align-items:start}
+.split-note{background:var(--panel);border:1px solid var(--border);padding:18px 22px}
+.split-note h3{font-size:14px;font-weight:500;letter-spacing:.12em;margin-bottom:9px}
+.split-note p{font-size:13px;line-height:1.95}
+
+/* ───────── 關係圖（路徑圖）───────── */
+.pd-wrap{background:var(--panel);border:1px solid var(--border);padding:16px clamp(10px,1.8vw,22px) 18px}
+.pd{width:100%;height:auto;display:block;font-family:var(--sans)}
+.pd .pd-edge{fill:none;stroke-linecap:round}
+.pd .pd-edge.dim{opacity:.16}
+.pd .pd-edge.pos{stroke:var(--pos)}
+.pd .pd-edge.neg{stroke:var(--neg)}
+.pd .pd-edge.nsig{stroke-dasharray:5 4}
+.pd .pd-arrow.pos{fill:var(--pos)}
+.pd .pd-arrow.neg{fill:var(--neg)}
+.pd .pd-arrow.dim{opacity:.16}
+.pd .pd-node{fill:var(--panel);stroke:var(--border-dark);stroke-width:1}
+.pd .pd-node.on{stroke:var(--text);stroke-width:1.6}
+.pd .pd-hit{fill:transparent;cursor:pointer}
+.pd .pd-nlab{font-family:var(--serif);font-size:20.5px;font-weight:500;fill:var(--text);letter-spacing:.06em}
+.pd .pd-nsub{font-size:17px;fill:var(--muted)}
+/* 係數顯示在節點內，不再浮在曲線上 */
+.pd .pd-ncoef{font-family:var(--sans);font-size:17px;font-variant-numeric:tabular-nums}
+.pd .pd-ck{fill:var(--muted);font-family:var(--serif);font-style:italic;font-size:15.5px}
+.pd .pd-va,.pd .pd-vb,.pd .pd-vc{font-weight:500}
+.pd .pd-va.pos,.pd .pd-vb.pos,.pd .pd-vc.pos{fill:var(--pos)}
+.pd .pd-va.neg,.pd .pd-vb.neg,.pd .pd-vc.neg{fill:var(--neg)}
+.pd .pd-va.weak,.pd .pd-vb.weak,.pd .pd-vc.weak{opacity:.62}
+.pd path.pd-edge{fill:none}
+.pd .pd-ncoef.dim,.pd .pd-clab.dim{opacity:.18}
+.pd .pd-clab{font-family:var(--sans);font-size:17px;font-variant-numeric:tabular-nums}
+.pd .pd-elab.pos{fill:var(--pos)}
+.pd .pd-elab.neg{fill:var(--neg)}
+.pd .pd-elab.dim{opacity:.2}
+.pd .pd-col{font-size:12px;fill:var(--muted);letter-spacing:.2em;font-family:var(--sans)}
+.pd .pd-brace{fill:none;stroke:var(--border-dark);stroke-width:1}
+/* 分組：色彩只留 3px 色塊，文字統一中性墨色，位置固定在同一 x */
+.pd .pd-grp{font-family:var(--serif);font-size:17px;letter-spacing:.14em;fill:var(--muted)}
+.pd .pd-gbar.g-budget{fill:var(--k-budget)}
+.pd .pd-gbar.g-cn{fill:var(--k-cn)}
+.pd .pd-gbar.g-us{fill:var(--k-us)}
+
+/* 頁首欄帶：三個欄標題同一基線，a／b 標在欄與欄之間 */
+.pd .pd-colk{font-family:var(--sans);font-size:17px;font-weight:500;fill:var(--text);letter-spacing:.1em}
+.pd .pd-coln{font-family:var(--serif);font-size:17px;fill:var(--muted);letter-spacing:.14em}
+.pd .pd-col2{letter-spacing:0}
+.pd .pd-bandline{stroke:var(--border-dark);stroke-width:1}
+.pd .pd-bandarrow{fill:var(--border-dark)}
+.pd .pd-bandlab{font-family:var(--serif);font-size:19px;font-style:italic;fill:var(--text)}
+.pd .pd-rule{stroke:var(--border);stroke-width:1}
+.pd-legend{display:flex;flex-wrap:wrap;align-items:baseline;gap:5px 18px;font-size:12px;
+  color:var(--muted);letter-spacing:.05em;margin-top:11px;
+  padding-top:9px;border-top:1px solid #EAF0F4}
+.pd-legend b{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--text);margin-right:2px}
+.pd-legend .pd-hint{margin-left:auto;color:var(--muted)}
+.pd-legend i{display:inline-block;width:20px;height:0;border-top-width:2.5px;border-top-style:solid;margin-right:6px;vertical-align:.3em}
+.pd-legend i.pos{border-color:var(--pos)}
+.pd-legend i.neg{border-color:var(--neg)}
+.pd-legend i.nsig{border-color:var(--muted);border-top-style:dashed}
+.pd-read{background:var(--panel);border:1px solid var(--border);padding:16px 22px;margin-top:15px}
+.pd-read h3{font-size:14px;font-weight:500;letter-spacing:.12em;margin-bottom:10px}
+.pd-read .pd-eq{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;font-family:var(--sans);font-size:12.5px;margin-bottom:10px}
+.pd-read .pd-eq span{color:var(--muted)}
+.pd-read .pd-eq b{font-weight:500}
+.pd-read p{font-size:13px;line-height:1.95}
+.pd-val{font-family:var(--sans)}
+
+/* ───────── 2×2 矩陣 ───────── */
+.mx{display:grid;grid-template-columns:clamp(72px,7.5vw,100px) 1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
+.mx>span{background:var(--panel);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--muted);padding:7px;text-align:center;letter-spacing:.1em}
+.mx-corner{flex-direction:column;gap:1px;line-height:1.45;font-size:11px}
+.mx-head{font-family:var(--serif);color:var(--text)!important;font-size:13px!important;font-weight:500}
+/* 回應性／工具性 改橫排 */
+.mx-side{font-family:var(--serif);color:var(--text)!important;font-size:13px!important;font-weight:500;letter-spacing:.1em;white-space:nowrap}
+.mx-cell{background:var(--panel);padding:16px 14px;text-align:left;min-height:84px;display:flex;flex-direction:column;gap:5px;transition:background .15s}
+.mx-cell:hover{background:#F0F6FA}
+.mx-cell b{font-size:15px;font-weight:500;letter-spacing:.1em}
+.mx-cell span{font-size:12px;color:var(--muted);line-height:1.7}
+.mx-cell[aria-pressed=true]{background:var(--text)}
+.mx-cell[aria-pressed=true] b{color:var(--panel)}
+.mx-cell[aria-pressed=true] span{color:#C3CED4}
+
+/* ───────── 事件清單 ───────── */
+.list{display:grid}
+.list-row{display:grid;grid-template-columns:84px 16px 1fr auto;align-items:center;gap:10px;width:100%;
+  padding:9px 0;border-bottom:1px solid #EAF0F4;text-align:left;transition:background .15s}
+.list-row:hover{background:#F4F9FC}
+.list-row:last-child{border-bottom:0}
+.list-when{font-size:12px;color:var(--muted);font-family:var(--sans);letter-spacing:.04em}
+.list-mark{justify-self:center;width:10px;height:10px;border:1.5px solid var(--border-dark)}
+.k-law .list-mark{background:var(--muted);border-color:var(--muted)}
+.k-pass .list-mark{background:var(--c1t);border-color:var(--c1t);border-radius:50%}
+.k-fail .list-mark{background:transparent;border-color:var(--border-dark);border-radius:50%}
+.k-inst .list-mark{background:var(--c5t);border-color:var(--c5t)}
+.k-cn .list-mark{background:var(--k-cn);border-color:var(--k-cn)}
+.k-us .list-mark{background:var(--k-us);border-color:var(--k-us)}
+.k-survey .list-mark{background:var(--c3t);border-color:var(--c3t)}
+.list-what{font-size:13px;line-height:1.6;letter-spacing:.04em}
+.list-tag{font-size:12px;color:var(--muted);font-family:var(--sans);letter-spacing:.08em;white-space:nowrap}
+.list-row[aria-pressed=true]{background:#F0F6FA}
+.list-row[aria-pressed=true] .list-what{font-weight:500}
+.detail{background:var(--panel);border:1px solid var(--border);padding:16px 22px;margin-top:14px}
+.detail h3{font-size:14.5px;font-weight:500;letter-spacing:.12em;margin-bottom:5px}
+.detail .when{font-size:12px;color:var(--c1t);letter-spacing:.14em;font-family:var(--sans);display:block;margin-bottom:8px}
+.detail p{font-size:13.5px;line-height:1.95}
+
+/* ───────── 發散堆疊（Likert） ───────── */
+.dv{display:flex;gap:1px;height:20px;margin-top:5px}
+.dv-seg{display:flex;align-items:center;justify-content:center;font-size:12px;font-family:var(--sans);min-width:0;overflow:hidden}
+.d-p2{background:#1F5C86;color:#F4F9FC}
+.d-p1{background:#8FB6D2;color:#17344A}
+.d-mid{background:#D9E2E8;color:#2B3B45}
+.d-n1{background:#D8B08A;color:#46290C}
+.d-n2{background:#8A5424;color:#FBF4EC}
+.d-miss{background:#C3CED4;color:#28353C}
+.dv-keys{display:flex;flex-wrap:wrap;gap:3px 15px;font-size:12px;color:var(--muted);margin-top:7px;letter-spacing:.04em}
+.dv-key::before{content:"";display:inline-block;width:9px;height:9px;margin-right:5px}
+.dv-key.d-p2::before{background:#1F5C86}.dv-key.d-p1::before{background:#8FB6D2}
+.dv-key.d-mid::before{background:#D9E2E8}.dv-key.d-n1::before{background:#D8B08A}
+.dv-key.d-n2::before{background:#8A5424}.dv-key.d-miss::before{background:#C3CED4}
+.dv-keys .dv-key{background:none!important;color:var(--muted)!important}
+.dv-name{font-size:13px;letter-spacing:.06em;display:flex;flex-wrap:wrap;justify-content:space-between;gap:3px 14px;align-items:baseline}
+.dv-name em{font-style:normal;font-size:12px;color:var(--muted);font-family:var(--sans)}
+.dv-row+.dv-row{margin-top:14px;padding-top:12px;border-top:1px solid #EAF0F4}
+
+/* ───────── 問項 ───────── */
+.q-list{display:grid;gap:0}
+.q-item{border-bottom:1px solid #EAF0F4;padding:13px 0}
+.q-item:first-child{padding-top:0}
+.q-item:last-child{border-bottom:0;padding-bottom:0}
+.q-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin-bottom:7px}
+.q-dim{font-size:12px;font-family:var(--sans);letter-spacing:.14em;padding:2px 8px;border:1px solid currentColor}
+.q-budget .q-dim{color:var(--k-budget)}.q-cn .q-dim{color:var(--k-cn)}.q-us .q-dim{color:var(--k-us)}
+.q-name{font-size:14px;font-weight:500;letter-spacing:.1em}
+.q-item q{font-size:13.5px;color:var(--muted);line-height:2;display:block;letter-spacing:.04em}
+
+/* ───────── 假設 ───────── */
+.hypo{display:grid;gap:0}
+.hypo-row{display:grid;grid-template-columns:58px 86px 1fr auto;align-items:center;gap:8px 15px;
+  padding:12px 0;border-bottom:1px solid #EAF0F4;text-align:left;width:100%;transition:background .15s}
+.hypo-row:hover{background:#F4F9FC}
+.hypo-row:last-child{border-bottom:0}
+.hypo-id{font-family:var(--sans);font-size:13px;font-weight:500;text-align:center;border:1px solid var(--border-dark);padding:4px 0;letter-spacing:.06em}
+.hypo-path{font-family:var(--sans);font-size:12px;color:var(--muted);letter-spacing:.06em}
+.hypo-body b{font-size:13.5px;font-weight:500;display:block;margin-bottom:2px;letter-spacing:.06em}
+.hypo-body p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.85}
+.hypo-st{font-family:var(--sans);font-size:12px;letter-spacing:.1em;color:var(--c4t);white-space:nowrap}
+
+/* ───────── 啞鈴圖 ───────── */
+.db{display:grid}
+.db-row{display:grid;grid-template-columns:62px 1fr 62px;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid #EAF0F4}
+.db-row:last-child{border-bottom:0}
+.db-name{font-size:13px;letter-spacing:.08em}
+.db-track{position:relative;height:14px}
+.db-track::before{content:"";position:absolute;inset:50% 0 auto;height:1px;background:var(--border);transform:translateY(-50%)}
+.db-link{position:absolute;top:50%;height:3px;transform:translateY(-50%)}
+.db-pt{position:absolute;top:50%;width:11px;height:11px;border-radius:50%;transform:translate(-50%,-50%)}
+.db-100{position:absolute;top:0;bottom:0;width:0;border-left:1px dashed var(--border-dark);transform:translateX(-50%)}
+.db-val{font-size:13px;font-family:var(--sans);text-align:right}
+.db-green .db-link{background:#A7C3B2}.db-green .db-pt.mi{background:var(--green)}.db-green .db-pt.lw{background:var(--panel);border:2px solid var(--green)}
+.db-blue .db-link{background:#A9C2DB}.db-blue .db-pt.mi{background:var(--blue)}.db-blue .db-pt.lw{background:var(--panel);border:2px solid var(--blue)}
+.db-tpp .db-link{background:#99C4C0}.db-tpp .db-pt.mi{background:var(--tpp)}.db-tpp .db-pt.lw{background:var(--panel);border:2px solid var(--tpp)}
+.db-axis{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);font-family:var(--sans);padding:0 62px 0 74px;margin-top:3px}
+
+/* ───────── 折線圖 ───────── */
+.chart{width:100%;height:auto;display:block;overflow:visible;font-family:var(--sans)}
+.chart .gr{stroke:#E8EEF2;stroke-width:1}
+.chart .zero{stroke:var(--border-dark);stroke-width:1;stroke-dasharray:3 3}
+.chart .ax{font-size:12px;fill:var(--muted);font-variant-numeric:tabular-nums}
+.chart .axn{font-family:var(--serif);font-size:12px;fill:var(--muted);letter-spacing:.1em}
+.chart .ln{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.chart .pt{stroke:var(--panel);stroke-width:1.5}
+.chart .lb{font-family:var(--serif);font-size:13px;font-weight:500;letter-spacing:.08em}
+.l-green{stroke:var(--green)}.p-green{fill:var(--green);stroke:var(--green)}.t-green{fill:var(--green)}
+.l-blue{stroke:var(--blue)}.p-blue{fill:var(--blue);stroke:var(--blue)}.t-blue{fill:var(--blue)}
+.l-tpp{stroke:var(--tpp)}.p-tpp{fill:var(--tpp);stroke:var(--tpp)}.t-tpp{fill:var(--tpp)}
+.chart .band{fill:#DCE7EE;opacity:.5}
+
+/* ───────── 表格（三線表） ───────── */
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:13px;font-weight:300;font-family:var(--sans)}
+caption{text-align:left;font-size:12.5px;color:var(--muted);padding-bottom:11px;letter-spacing:.1em;font-family:var(--serif)}
+th{font-weight:500;text-align:right;padding:7px 10px;border-top:1.5px solid var(--text);border-bottom:1px solid var(--text);letter-spacing:.04em;font-size:12px;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th.grp{text-align:center;font-family:var(--serif);font-size:12px;border-bottom:1px solid var(--border)}
+td{padding:5px 10px;border-bottom:1px solid #E8EEF2;line-height:1.5;text-align:right;white-space:nowrap}
+tbody th[scope=row]{font-weight:300;text-align:left;border-top:0;border-bottom:1px solid #E8EEF2;font-size:12.5px}
+tbody th.ind{padding-left:22px;color:var(--muted)}
+tr.sub th{font-family:var(--serif);font-weight:500;font-size:12px;letter-spacing:.1em;color:var(--muted);padding-top:11px;border-bottom:1px solid var(--border)}
+tr.cf td,tr.cf th{padding-bottom:0;border-bottom:0}
+tr.sr td{padding-top:0;padding-bottom:5px;font-size:12px;color:var(--muted);border-bottom:1px solid #E8EEF2}
+td.se{color:var(--muted)}
+td.pc{color:var(--text)}
+td.na{color:var(--border)}
+tr.fit th,tr.fit td{border-top:1px solid var(--border);border-bottom:0;padding-top:6px;font-size:12px;color:var(--muted)}
+tr.tot th,tr.tot td{border-top:1px solid var(--border);font-weight:500;padding-top:6px}
+tr.last td,tr.last th{border-bottom:1.5px solid var(--text)}
+tr.hl td,tr.hl th{background:#EEF5FA}
+td.colhl,th.colhl{background:#EEF5FA}
+.tbl-note{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.85;letter-spacing:.04em}
+.star{font-family:var(--sans)}
+
+/* ───────── 原文對照 ───────── */
+dialog{border:1px solid var(--border-dark);background:var(--panel);color:var(--text);width:min(60rem,94vw);max-height:86dvh;padding:0}
+dialog::backdrop{background:#2B3A4480;backdrop-filter:blur(2px)}
+.dlg-top{display:flex;align-items:center;gap:14px;padding:16px clamp(16px,3vw,28px);border-bottom:1px solid var(--border-dark);position:sticky;top:0;background:var(--panel);z-index:2}
+.dlg-top h2{font-size:15px;font-weight:500;letter-spacing:.16em;margin-right:auto}
+.dlg-body{padding:16px clamp(16px,3vw,28px) 28px;overflow-y:auto;max-height:calc(86dvh - 62px)}
+.dlg-body pre{white-space:pre-wrap;word-break:break-word;font-family:var(--serif);font-size:13.5px;font-weight:300;line-height:2.1;color:var(--text);letter-spacing:.04em}
+.dlg-body .pg{font-family:var(--sans);font-size:12px;color:var(--c1t);letter-spacing:.16em;padding-top:15px;margin-top:15px;border-top:1px solid var(--border)}
+.dlg-body .pg:first-child{padding-top:0;margin-top:0;border-top:0}
+.dlg-btn{font-family:var(--serif);border:1px solid var(--border-dark);background:var(--panel);font-size:12px;letter-spacing:.14em;padding:7px 14px;min-height:32px}
+.dlg-btn:hover{background:#F0F6FA}
+
+/* ───────── 閱讀版（長捲頁） ───────── */
+body.read{display:grid;grid-template-columns:clamp(13rem,18vw,16.5rem) minmax(0,1fr);overflow:visible}
+.toc{position:sticky;top:0;height:100dvh;overflow-y:auto;border-right:1px solid var(--border-dark);padding:30px 20px 40px;background:#F4F9FCCC;backdrop-filter:blur(3px)}
+.toc-mast{font-size:14.5px;font-weight:500;letter-spacing:.1em;line-height:1.7}
+.toc-sub{font-size:12px;color:var(--muted);letter-spacing:.1em;margin:5px 0 18px;line-height:1.8}
+.toc nav{border-top:1px solid var(--border);padding-top:11px}
+.toc a{display:block;padding:5px 0 5px 11px;color:var(--muted);text-decoration:none;border-left:1px solid var(--border);font-size:12px;line-height:1.6;letter-spacing:.04em;transition:color .16s,border-color .16s}
+.toc a:hover{color:var(--text)}
+.toc a.sec{font-weight:500;color:var(--text);margin-top:13px;letter-spacing:.1em;border-left-color:var(--border-dark)}
+.toc a.here{color:var(--c1t);border-left-color:var(--c1t)}
+.toc-tools{margin-top:22px;padding-top:14px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:7px}
+.doc{padding:clamp(28px,5vh,56px) var(--pad-x) 120px;max-width:74rem}
+.doc-mast{margin-bottom:34px}
+.doc-mast h1{font-size:clamp(24px,3.4vw,38px);font-weight:600;line-height:1.6;letter-spacing:.08em;margin-bottom:9px}
+.doc-mast .sub{font-size:clamp(14px,1.5vw,17px);color:var(--c1t);letter-spacing:.16em;margin-bottom:16px}
+.doc-mast .meta{font-size:12px;color:var(--muted);letter-spacing:.1em;line-height:2;padding-bottom:20px;border-bottom:1px solid var(--border-dark)}
+.sec-head{margin-top:clamp(40px,6vh,70px);padding-top:14px;border-top:1.5px solid var(--text);scroll-margin-top:16px}
+.sec-head h2{font-size:clamp(18px,2.2vw,24px);font-weight:600;letter-spacing:.14em}
+.unit{padding-top:clamp(26px,4vh,40px);scroll-margin-top:16px}
+.unit>h3{font-size:clamp(16px,1.9vw,20px);font-weight:600;letter-spacing:.14em;line-height:1.6;margin-bottom:14px;display:flex;align-items:center;gap:12px}
+.unit>h3::before{content:"";width:12px;height:12px;flex:0 0 auto;background:var(--c1)}
+.unit.s1>h3::before{background:var(--c5)}.unit.s2>h3::before{background:var(--c4)}
+.unit.s3>h3::before{background:var(--c3)}.unit.s4>h3::before{background:var(--c2)}
+.unit.s5>h3::before{background:var(--c1)}
+.unit>*+*{margin-top:14px}
+.src-line{margin-top:13px}
+
+/* ───────── 響應式 ───────── */
+@media (max-width:980px){
+  body.read{grid-template-columns:minmax(0,1fr)}
+  .toc{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border-dark);padding:18px var(--pad-x) 20px}
+  .split{grid-template-columns:1fr}
+}
+@media (min-width:601px) and (max-width:980px){.toc nav{columns:2;column-gap:20px}.toc a{break-inside:avoid}}
+@media (max-width:900px){
+  :root{--pad-l:clamp(20px,4.4vw,64px)}
+  .page{padding-bottom:88px}
+  .kiosk-nav{left:0;right:0;bottom:0;flex-direction:row;justify-content:center;gap:0;background:#F4F9FCF2;border-top:1px solid var(--border-dark);padding:7px 10px}
+  .kiosk-btn{writing-mode:horizontal-tb;min-height:40px;border:1px solid var(--border);padding:9px 14px;font-size:12px;letter-spacing:.12em}
+  .deco{display:none}
+  .timeline{flex-direction:column;align-items:stretch;padding:22px 0;gap:0}
+  .timeline::before{top:0;bottom:0;left:13px;right:auto;width:1px;height:auto}
+  .tl-node{flex-direction:row;align-items:center;gap:13px;text-align:left;padding:11px 0}
+  .tl-top{margin:0;flex:0 0 auto;font-size:13px}
+  .tl-dot{width:20px;height:20px;order:-1;flex:0 0 auto;margin-left:4px}
+  .tl-bot{margin:0;max-width:none;font-size:12px}
+  .mx{grid-template-columns:64px 1fr 1fr}
+  .mx-cell{padding:11px 9px;min-height:72px}
+  .mx-cell b{font-size:12.5px}
+  .kv>div{grid-template-columns:1fr;gap:3px}
+  .bar-row{grid-template-columns:1fr 46px 56px;row-gap:3px}
+  .bar-lab{grid-column:1/-1;text-align:left}
+  .bar-track{grid-column:1/-1;order:3}
+  .list-row{grid-template-columns:70px 14px 1fr;row-gap:2px}
+  .list-tag{grid-column:3}
+  .hypo-row{grid-template-columns:52px 1fr;gap:4px 12px}
+  .hypo-path,.hypo-body,.hypo-st{grid-column:2}
+  .db-row{grid-template-columns:50px 1fr 50px}
+  .db-axis{padding:0 50px 0 62px}
+  .q-head{gap:4px 9px}
+}
+@media print{
+  @page{size:A4 landscape;margin:9mm}
+  body{background:#fff}
+  body.kiosk{overflow:visible}
+  .kiosk-nav,.kiosk-rail,.deco,dialog,.toc{display:none!important}
+  .page{display:block!important;position:static;inset:auto;padding:0;overflow:visible;height:176mm;page-break-after:always}
+  .page:last-child{page-break-after:auto}
+  .page.active .page-inner>*{animation:none}
+  body.read{display:block}
+  .doc{padding:0;max-width:none}
+  .panel,.card,.tbl-wrap,.pd-wrap,.stat-strip{break-inside:avoid}
+  table{font-size:8.5pt}
+}
+
+/* 表 3 照登表的雙層儲存格 */
+.tbl-t3 td{text-align:left;white-space:normal}
+.tbl-t3 .cell-lb{display:block;font-size:12px;color:var(--muted);line-height:1.5;letter-spacing:.04em}
+.tbl-t3 .cell-v{display:block;font-variant-numeric:tabular-nums;font-size:13px}
+.tbl-t3 td.miss .cell-v{color:var(--k-cn)}
+.tbl-a1 td.a1-topic{text-align:left;white-space:normal;max-width:30rem}
+.tbl-a1 td.a1-topic b{display:block}
+.tbl-a1 td.a1-topic span{display:block;font-size:12px;color:var(--muted);line-height:1.6}
+
+/* 右上輔助鈕 */
+.tools{position:fixed;right:clamp(14px,2.4vw,28px);top:clamp(14px,2.4vh,26px);display:flex;gap:6px;z-index:99}
+@media (max-width:900px){.tools{position:static;justify-content:flex-end;margin-bottom:12px}}
+
+/* ───────── 資訊站密度：一頁必須裝得下 ───────── */
+/* 完整表格自成捲動區，表頭與列名固定 */
+body.kiosk .tbl-wrap{max-height:calc(100dvh - 21rem);overflow:auto}
+body.kiosk .tbl-wrap thead{position:sticky;top:0;z-index:3}
+body.kiosk .tbl-wrap thead th{background:var(--panel)}
+body.kiosk .tbl-wrap tbody th[scope=row]{position:sticky;left:0;z-index:2;background:var(--panel);box-shadow:1px 0 0 #E8EEF2}
+body.kiosk .tbl-wrap tr.sub th[scope=row]{box-shadow:none}
+
+/* 關係圖與架構圖限高 */
+body.kiosk .pd{max-height:min(49vh,420px)}
+
+/* 清單＋細節：寬螢幕改雙欄，細節不再往下推高 */
+@media (min-width:1000px){
+  body.kiosk .fig-tl,body.kiosk .fig-hx,body.kiosk .fig-rs{
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(15rem,21rem);
+    column-gap:15px;align-items:start;
+  }
+  body.kiosk .fig-tl>.panel,body.kiosk .fig-hx>.panel,body.kiosk .fig-rs>.panel{grid-column:1;grid-row:1}
+  body.kiosk .fig-tl>.detail,body.kiosk .fig-hx>.detail,body.kiosk .fig-rs>.detail{grid-column:2;grid-row:1;margin-top:0}
+}
+body.kiosk .fig-tl .list-row,body.kiosk .fig-hx .list-row{padding:7px 0}
+body.kiosk .fig-rs .bar-row{align-items:center}
+body.kiosk .fig-rs .bars{gap:8px}
+body.kiosk .dv-row+.dv-row{margin-top:10px;padding-top:9px}
+body.kiosk .dv-keys{margin-top:5px;gap:2px 13px}
+body.kiosk .panel{padding:18px clamp(14px,2.2vw,28px)}
+body.kiosk .page-head{padding-bottom:11px;margin-bottom:17px}
+body.kiosk .panel+.panel,body.kiosk .panel+.cards,body.kiosk .cards+.panel,
+body.kiosk .panel+.stat-strip,body.kiosk .stat-strip+.panel{margin-top:12px}
+body.kiosk .ctl-bar{margin-bottom:12px}
+@media print{
+  body.kiosk .tbl-wrap{max-height:none;overflow:visible}
+  body.kiosk .tbl-wrap thead,body.kiosk .tbl-wrap tbody th[scope=row]{position:static;box-shadow:none}
+  body.kiosk .pd{max-height:none}
+}
+body.kiosk .q-item{padding:10px 0}
+body.kiosk .q-head{margin-bottom:5px}
+body.kiosk .q-item q{line-height:1.88}
+
+/* 字級上調後的最後收尾：每頁再省 15–25px */
+body.kiosk .pd{max-height:min(45vh,392px)}
+body.kiosk .panel{padding:16px clamp(14px,2.2vw,26px)}
+body.kiosk .page-inner>.cite:last-child{margin-top:10px}
+body.kiosk .dv-row+.dv-row{margin-top:8px;padding-top:8px}
+body.kiosk .q-item{padding:9px 0}
+body.kiosk .fig-rs .bars{gap:7px}
+body.kiosk .pd-read{padding:14px 20px}
+body.kiosk .pd-legend{margin-top:11px;gap:5px 18px}
+
+/* 研討會版：精簡架構圖與完整表格視窗 */
+body.kiosk .pd-slim{max-height:min(34vh,290px)}
+.tbl-dlg{width:min(72rem,96vw)}
+.tbl-dlg .dlg-top{flex-wrap:wrap}
+.tbl-tabs{display:flex;gap:6px;flex:1 1 100%}
+.tbl-tabs button{font-family:var(--serif);background:var(--panel);border:1px solid var(--border);
+  font-size:12px;letter-spacing:.1em;padding:7px 14px;min-height:34px;color:var(--text);transition:all .16s}
+.tbl-tabs button:hover{background:#F0F6FA;border-color:var(--border-dark)}
+.tbl-tabs button[aria-selected=true]{background:var(--text);border-color:var(--text);color:var(--panel)}
+.tbl-pane{display:none}
+.tbl-pane.on{display:block}
+.tbl-dlg .tbl-wrap{max-height:none}
+.tbl-dlg table{font-size:12.5px}
+
+/* 矮螢幕（1280×800、筆電外接投影）每頁仍需裝得下 */
+@media (max-height:880px){
+  body.kiosk p{font-size:14px;line-height:1.88}
+  body.kiosk .lead{font-size:clamp(15px,1.5vw,17.5px);line-height:1.8}
+  body.kiosk .kv>div{padding:9px 0}
+  body.kiosk .kv p{font-size:13px;line-height:1.85}
+  body.kiosk .panel{padding:13px clamp(12px,2vw,22px)}
+  body.kiosk .pd{max-height:min(40vh,330px)}
+  body.kiosk .pd-slim{max-height:min(31vh,250px)}
+  body.kiosk .chart{max-height:min(33vh,268px)}
+  body.kiosk .pd-read{padding:11px 17px}
+  body.kiosk .pd-legend{margin-top:9px}
+  body.kiosk .fig>*+*{margin-top:9px}
+  body.kiosk .fig{padding-top:0}
+  body.kiosk .panel+.panel,body.kiosk .panel+.cards,body.kiosk .cards+.panel,
+  body.kiosk .panel+.stat-strip,body.kiosk .stat-strip+.panel{margin-top:10px}
+  body.kiosk .page-head{padding-bottom:9px;margin-bottom:13px}
+  body.kiosk .page{padding-top:26px;padding-bottom:44px}
+  body.kiosk .list-row{padding:6px 0}
+  body.kiosk .fig-rs .bars{gap:6px}
+  body.kiosk .stat{padding:13px 14px}
+  body.kiosk .detail{padding:12px 17px}
+  body.kiosk .ctl-bar{margin-bottom:9px}
+  body.kiosk .mx-cell{min-height:70px;padding:12px 11px}
+  body.kiosk .dv-row+.dv-row{margin-top:7px;padding-top:7px}
+}
+@media (max-height:880px){
+  body.kiosk .fig-rs .list-row,body.kiosk .fig-rs .bar-row{padding:0}
+  body.kiosk .fig-rs .ctl-lab{margin:8px 0 5px!important}
+}
+
+/* 理由書頁：長條在左欄，細節與註解在右欄 */
+@media (min-width:1000px){
+  body.kiosk .fig-rs>.panel:first-child{grid-column:1;grid-row:1/span 2}
+  body.kiosk .fig-rs>.detail{grid-column:2;grid-row:1;margin-top:0}
+  body.kiosk .fig-rs>.rs-foot{grid-column:2;grid-row:2;margin-top:10px}
+}
+
+/* ═════════ 固定 16:9 投影片畫布 ═════════ */
+body.slide{overflow:hidden;min-height:100vh}
+.stage{position:fixed;inset:0;display:grid;place-items:center;overflow:hidden}
+.deckbox{width:1280px;height:720px;position:relative;transform-origin:center center;flex:0 0 auto}
+body.slide .page{position:absolute;inset:0;padding:30px 44px 34px 112px;overflow:hidden;display:none}
+body.slide .page.active{display:block}
+body.slide .page-inner{max-width:none;margin:0;height:100%;display:flex;flex-direction:column}
+body.slide .page-inner>*{flex:0 0 auto}
+body.slide .page-inner>.fig{flex:0 1 auto;min-height:0;display:flex;flex-direction:column}
+body.slide .kiosk-nav{left:18px;bottom:26px;gap:7px}
+body.slide .kiosk-btn{min-height:84px;padding:10px 13px;font-size:12px;letter-spacing:.16em}
+body.slide .deco{left:30px;top:26px}
+body.slide .deco i{width:24px;height:29px}
+body.slide .tools{right:22px;top:20px}
+body.slide .page{font-size:15px}
+
+/* 投影片內的密度（1280×720 邏輯畫布，固定像素可預測） */
+body.slide p{font-size:14px;line-height:1.82}
+body.slide .lead{font-size:17px;line-height:1.75;font-weight:400}
+body.slide .note{font-size:12px;line-height:1.75}
+body.slide .cite{font-size:12px;line-height:1.7}
+body.slide .panel{padding:14px 20px}
+body.slide .panel+.panel,body.slide .panel+.cards,body.slide .cards+.panel,
+body.slide .panel+.stat-strip,body.slide .stat-strip+.panel,body.slide .fig>*+*{margin-top:10px}
+body.slide .page-head{padding-bottom:9px;margin-bottom:13px}
+body.slide .page-title{font-size:21px;letter-spacing:.12em}
+body.slide .page-num{font-size:12px}
+body.slide .kv>div{padding:8px 0}
+body.slide .kv b{font-size:13.5px}
+body.slide .kv p{font-size:13px;line-height:1.8}
+body.slide .pd{max-height:330px}
+body.slide .pd-slim{max-height:252px}
+body.slide .chart{max-height:252px}
+body.slide .detail{padding:12px 18px;margin-top:10px}
+body.slide .stat{padding:12px 13px}
+body.slide .stat b{font-size:24px}
+body.slide .home{padding-top:52px}
+body.slide .home h1{font-size:33px}
+body.slide .home .sub{font-size:17px}
+body.slide .timeline{padding:34px 8px;max-width:1030px}
+body.slide .tl-top{font-size:13.5px;margin-bottom:12px}
+body.slide .tl-dot{width:22px;height:22px}
+body.slide .tl-bot{font-size:12px;margin-top:12px;max-width:150px;line-height:1.7}
+body.slide .home-foot{font-size:12px}
+
+/* 制度史三轉折 */
+.eras{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
+.era{background:var(--panel);border:1px solid var(--border);padding:13px 16px;text-align:left;
+  display:flex;flex-direction:column;gap:4px;border-top-width:3px;transition:background .16s}
+.era:hover{background:#F0F6FA}
+.era-when{font-family:var(--sans);font-size:12px;color:var(--muted);letter-spacing:.08em}
+.era-name{font-size:16px;font-weight:500;letter-spacing:.14em}
+.era-rule{font-size:12px;color:var(--muted);line-height:1.65}
+.era-score{font-size:12px;color:var(--muted);font-family:var(--sans);margin-top:3px}
+.era-score b{font-size:15px;color:var(--text);font-weight:500}
+.era.k-law{border-top-color:var(--muted)}
+.era.k-pass{border-top-color:var(--c1t)}
+.era.k-fail{border-top-color:var(--c3t)}
+.era[aria-pressed=true]{background:#EAF2F7}
+.era[aria-pressed=true] .era-name{color:var(--text)}
+
+/* 展開的比較案例 */
+.detail .gist{font-size:13px;line-height:1.85;margin-top:7px}
+/* 比較案例固定三欄：六個案例排成 2 列 × 3 欄，不再出現 5＋1 的落單 */
+.cases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px 18px;margin-top:11px;
+  padding-top:11px;border-top:1px solid #EAF0F4}
+.cases-tight{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px 16px}
+@media (max-width:900px){
+  .cases,.cases-tight{grid-template-columns:1fr}
+}
+.case b{display:block;font-size:12.5px;font-weight:500;letter-spacing:.06em;margin-bottom:3px;color:var(--c1t)}
+.case p{font-size:12px;line-height:1.78;color:var(--muted);margin:0}
+
+/* 定位頁 */
+.poss{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.pos-btn{background:var(--panel);border:1px solid var(--border);padding:12px 14px;text-align:left;
+  display:flex;flex-direction:column;gap:5px;border-top-width:3px;transition:background .16s}
+.pos-btn:hover{background:#F0F6FA}
+.pos-name{font-size:14.5px;font-weight:500;letter-spacing:.1em}
+.pos-ref{font-size:12px;color:var(--muted);line-height:1.6}
+.pos-c5{border-top-color:var(--c5)}.pos-c2{border-top-color:var(--c2)}
+.pos-c4{border-top-color:var(--c4)}.pos-c1{border-top-color:var(--c1)}
+.pos-btn[aria-pressed=true]{background:#EAF2F7}
+.gap2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:11px;padding-top:11px;border-top:1px solid #EAF0F4}
+.gap-has b,.gap-add b{display:block;font-size:12px;font-family:var(--sans);letter-spacing:.14em;margin-bottom:5px}
+.gap-has b{color:var(--muted)}
+.gap-add b{color:var(--c1t)}
+.gap-has p,.gap-add p{font-size:12.5px;line-height:1.8;margin:0}
+.gap-add{border-left:1px solid var(--border);padding-left:16px}
+
+@media (max-width:900px){
+  .eras,.poss{grid-template-columns:1fr}
+  .gap2{grid-template-columns:1fr}
+  .gap-add{border-left:0;padding-left:0;border-top:1px solid var(--border);padding-top:11px}
+  body.slide{overflow:auto}
+  .stage{position:static;inset:auto;display:block}
+  .deckbox{width:100%!important;height:auto!important;transform:none!important}
+  body.slide .page{position:relative;inset:auto;height:auto;min-height:60vh;padding:20px 16px 80px}
+  body.slide .page-inner{height:auto}
+  body.slide .pd,body.slide .pd-slim,body.slide .chart{max-height:none}
+}
+
+/* ═════════ 投影片畫布固定 1280 寬：雙欄版面不看視窗寬度 ═════════ */
+body.slide .page{padding:24px 40px 26px 108px}
+body.slide .page-inner>.fig.fig-tl,
+body.slide .page-inner>.fig.fig-hx,
+body.slide .page-inner>.fig.fig-rs{
+  display:grid;grid-template-columns:minmax(0,1fr) 332px;column-gap:14px;align-items:start;
+  grid-auto-rows:min-content;
+}
+body.slide .fig-tl>.panel,body.slide .fig-hx>.panel{grid-column:1;grid-row:1}
+body.slide .fig-tl>.detail,body.slide .fig-hx>.detail{grid-column:2;grid-row:1;margin-top:0}
+body.slide .fig-rs>.panel:first-child{grid-column:1;grid-row:1/span 2}
+body.slide .fig-rs>.detail{grid-column:2;grid-row:1;margin-top:0}
+body.slide .fig-rs>.rs-foot{grid-column:2;grid-row:2;margin-top:9px}
+
+/* 列與長條在投影片中壓縮 */
+body.slide .list-row{padding:4px 0;grid-template-columns:76px 14px 1fr auto}
+body.slide .list-what{font-size:12.5px;line-height:1.5}
+body.slide .list-when,body.slide .list-tag{font-size:12px}
+body.slide .bars{gap:6px}
+body.slide .bar-track{height:15px}
+body.slide .bar-lab{font-size:12px}
+body.slide .bar-val{font-size:12px}
+body.slide .bar-beta{font-size:12px}
+body.slide .fig-rs .ctl-lab{margin:6px 0 4px!important}
+body.slide .detail .gist{font-size:12.5px;line-height:1.78;margin-top:6px}
+body.slide .cases{margin-top:9px;padding-top:9px;gap:9px 15px}
+body.slide .case b{font-size:12px}
+body.slide .case p{font-size:12px;line-height:1.72}
+body.slide .pd{max-height:302px}
+body.slide .pd-read{padding:11px 16px;margin-top:9px}
+body.slide .pd-read p{font-size:12px;line-height:1.75}
+body.slide .pd-read .pd-eq{font-size:12px;gap:4px 12px;margin-bottom:7px}
+body.slide .pd-legend{margin-top:8px;gap:4px 16px;font-size:12px}
+body.slide .mx-cell{min-height:64px;padding:11px 12px}
+body.slide .mx{grid-template-columns:86px 1fr 1fr}
+body.slide .mx-side{font-size:13px!important}
+body.slide .mx-corner{font-size:11px}
+body.slide .mx-cell b{font-size:14px}
+body.slide .mx-cell span{font-size:12px;line-height:1.6}
+body.slide .era{padding:11px 14px}
+body.slide .era-name{font-size:15px}
+body.slide .pos-btn{padding:10px 12px}
+body.slide .pos-name{font-size:13.5px}
+body.slide .gap2{margin-top:9px;padding-top:9px;gap:14px}
+body.slide .gap-has p,body.slide .gap-add p{font-size:12px;line-height:1.75}
+body.slide .db-row{padding:11px 0}
+body.slide .eras{gap:10px}
+body.slide .poss{gap:9px}
+
+@media (max-width:900px){
+  body.slide .page-inner>.fig.fig-tl,
+  body.slide .page-inner>.fig.fig-hx,
+  body.slide .page-inner>.fig.fig-rs{display:block}
+  body.slide .fig-tl>.detail,body.slide .fig-hx>.detail,
+  body.slide .fig-rs>.detail,body.slide .fig-rs>.rs-foot{margin-top:10px}
+  body.slide .page{padding:20px 16px 80px}
+}
+
+/* 畫布高度收尾：固定 720 必須裝得下 */
+body.slide .page{padding:24px 40px 20px 108px}
+body.slide .page-head{margin-bottom:8px}
+body.slide .page-inner>.fig{overflow:hidden}
+body.slide .pd-slim{max-height:356px}
+body.slide .pd{max-height:372px}
+body.slide .chart{max-height:240px}
+body.slide .fig-rs .bars{gap:5px}
+body.slide .fig-rs .bar-track{height:13px}
+body.slide .fig-rs .ctl-lab{margin:5px 0 3px!important;font-size:12px}
+body.slide .fig-rs .chart-title{margin-bottom:9px}
+body.slide .fig-rs>.panel:first-child{padding:11px 16px}
+
+/* 原文頁次改為固定頁尾，跨頁同位置，不參與 flex 計算 */
+body.slide .page-inner{padding-bottom:20px}
+body.slide .page-inner>p.cite:last-child{
+  position:absolute;left:108px;right:40px;bottom:5px;margin:0;
+  font-size:11.5px;color:var(--muted);letter-spacing:.08em;
+}
+@media (max-width:900px){
+  body.slide .page-inner{padding-bottom:0}
+  body.slide .page-inner>p.cite:last-child{position:static;left:auto;right:auto;bottom:auto;margin-top:10px}
+}
+
+/* 矩陣角落：上為驅動邏輯（縱軸）、下為制度目標（橫軸） */
+.mx-corner em{color:var(--text);font-weight:500}
+.mx-corner i{font-style:normal;color:var(--muted)}
+.mx-corner em::after{content:" ↓";font-size:.85em;opacity:.55}
+.mx-corner i::after{content:" →";font-size:.85em;opacity:.55}
+
+/* 占總效應（%TE）：最高者加粗框與強調色 */
+.pd .pd-nte{font-family:var(--sans);font-size:15.5px;font-variant-numeric:tabular-nums}
+.pd .pd-vte{fill:var(--muted);font-weight:500}
+.pd .pd-nte.top .pd-vte{fill:var(--accent-strong,#A8432A);font-weight:600}
+.pd .pd-nte.top .pd-ck{fill:var(--text)}
+.pd .pd-node.top{stroke:var(--text);stroke-width:2}
+.pd .pd-nte.dim{opacity:.18}
+.pd-legend i.top{border:0;width:16px;height:11px;border-radius:2px;
+  box-shadow:inset 0 0 0 2px var(--text);background:transparent;vertical-align:-1px}
+
+/* 含完整表格的頁：表格區塊仍填滿剩餘高度 */
+body.slide .page-inner>.panel:has(.tbl-wrap){flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+body.slide .page-inner>.panel:has(.tbl-wrap)>.tbl-wrap{flex:1 1 auto;min-height:0;overflow:auto}
+
+/* 啞鈴圖圖例 */
+.db-legend{display:flex;flex-wrap:wrap;gap:5px 20px;font-size:12px;color:var(--muted);
+  letter-spacing:.05em;margin-top:11px;padding-top:9px;border-top:1px solid #EAF0F4}
+.db-legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:7px;vertical-align:-2px}
+.db-legend i.lg-mi{background:var(--muted)}
+.db-legend i.lg-lw{background:var(--panel);box-shadow:inset 0 0 0 2px var(--muted)}
+.db-legend i.lg-100{width:0;height:14px;border-radius:0;border-left:1px dashed var(--border-dark);
+  margin-right:12px;margin-left:5px;vertical-align:-3px}
+
+/* 係數圖（forest plot） */
+.forest .fr-grid{stroke:#E8EEF2;stroke-width:1}
+.forest .fr-zero{stroke:var(--text);stroke-width:1.2}
+.forest .fr-axis{stroke:var(--border-dark);stroke-width:1}
+.forest .fr-tick{font-family:var(--sans);font-size:12px;fill:var(--muted);font-variant-numeric:tabular-nums}
+.forest .fr-axlab{font-family:var(--serif);font-size:12.5px;fill:var(--muted);letter-spacing:.08em}
+.forest .fr-head{font-family:var(--serif);font-size:14px;font-weight:600;fill:var(--text);letter-spacing:.12em}
+.forest .fr-lab{font-family:var(--sans);font-size:12.5px;fill:var(--muted)}
+.forest .fr-val{font-family:var(--sans);font-size:12.5px;fill:var(--text);font-variant-numeric:tabular-nums}
+.forest .fr-se{fill:var(--muted)}
+.forest .fr-lgd{font-family:var(--sans);font-size:12.5px;fill:var(--muted)}
+.forest .fr-ci{stroke-width:1.6}
+.forest .fr-cap{stroke-width:1.6}
+.forest .fr-legend .fr-dot{fill:var(--muted)}
+.forest .fr-legend .fr-ci,.forest .fr-legend .fr-cap{stroke:var(--muted)}
+.forest .fr-green .fr-ci,.forest .fr-green .fr-cap{stroke:var(--green)}
+.forest .fr-green .fr-dot{fill:var(--green)}
+.forest .fr-blue .fr-ci,.forest .fr-blue .fr-cap{stroke:var(--blue)}
+.forest .fr-blue .fr-dot{fill:var(--blue)}
+.forest .fr-tpp .fr-ci,.forest .fr-tpp .fr-cap{stroke:var(--tpp)}
+.forest .fr-tpp .fr-dot{fill:var(--tpp)}
+.forest .fr-row.ns .fr-dot{fill:var(--panel);stroke-width:1.8}
+.forest .fr-green.ns .fr-dot{stroke:var(--green)}
+.forest .fr-blue.ns .fr-dot{stroke:var(--blue)}
+.forest .fr-tpp.ns .fr-dot{stroke:var(--tpp)}
+.forest .fr-row{transition:opacity .2s cubic-bezier(.16,.84,.26,1)}
+.forest .fr-row.mute{opacity:.22}
+.forest .fr-row.hl .fr-lab,.forest .fr-row.hl .fr-val{font-weight:600;fill:var(--text)}
+body.slide .forest{max-height:400px}
+
+/* 資料分析與結論頁：列距放寬，不留大片空白 */
+body.slide .fig-khb .bars{gap:14px}
+body.slide .fig-khb .bar-track{height:19px}
+body.slide .fig-te .db-row{padding:18px 0}
+body.slide .fig-te .db-track{height:16px}
+body.slide .fig-te .db-pt{width:13px;height:13px}
+
+/* ═════════ 完整表格視窗：字級 ×1.2 ═════════ */
+.tbl-dlg table{font-size:15px}
+.tbl-dlg caption{font-size:15px;padding-bottom:13px}
+.tbl-dlg th{font-size:14.5px;padding:8px 12px}
+.tbl-dlg th.grp{font-size:14.5px}
+.tbl-dlg td{padding:6px 12px}
+.tbl-dlg tbody th[scope=row]{font-size:15px}
+.tbl-dlg tbody th.ind{padding-left:26px}
+.tbl-dlg tr.sub th{font-size:14.5px;padding-top:13px}
+.tbl-dlg tr.sr td{font-size:13.5px;padding-bottom:6px}
+.tbl-dlg tr.fit th,.tbl-dlg tr.fit td{font-size:14px;padding-top:7px}
+.tbl-dlg .tbl-note{font-size:14px;margin-top:11px}
+.tbl-dlg .cite{font-size:14px}
+.tbl-dlg .flag{font-size:14px}
+.tbl-dlg .note{font-size:14px}
+.tbl-dlg .tbl-t3 .cell-lb{font-size:13.5px}
+.tbl-dlg .tbl-t3 .cell-v{font-size:15.5px}
+.tbl-dlg .tbl-a1 td.a1-topic span{font-size:13.5px}
+.tbl-dlg .dlg-top h2{font-size:18px}
+.tbl-dlg .tbl-tabs button{font-size:14.5px;padding:8px 17px;min-height:38px}
+.tbl-dlg .dlg-btn{font-size:14px}
+
+/* 讀法面板：加大行距與內距，文字不貼框 */
+.pd-read{padding:17px 24px 18px}
+.pd-read h3{margin-bottom:12px}
+.pd-read .pd-eq{margin-bottom:12px;line-height:1.9}
+.pd-read p{line-height:2.0;margin:0}
+body.slide .pd-read{padding:15px 20px 16px}
+body.slide .pd-read p{line-height:1.95}
+body.slide .pd-read .pd-eq{line-height:1.85;margin-bottom:10px}
+body.slide .pd{max-height:430px}
+body.slide .pd-slim{max-height:400px}
+
+/* 第 8 頁：讀法面板精簡為標題＋數值列，圖才有空間 */
+body.slide .pd-read>p:not(.pd-eq){display:none}
+body.slide .pd-read{padding:13px 20px 14px}
+body.slide .pd-read .pd-eq{margin-bottom:0}
+body.slide .fig-pd>.ctl-bar{margin-bottom:9px}
+body.slide .fig-pd>*+*{margin-top:9px}
+body.slide .pd{max-height:384px}
+body.slide .fig-pd .pd-wrap{padding:12px 16px 14px}
+body.slide .fig-pd .pd-legend{margin-top:8px;padding-top:7px}
+
+/* 孤字：優先交給瀏覽器的 pretty 斷行，避免最後一行只剩一兩個字 */
+p,q,.era-rule,.pos-ref,.chart-title,.tbl-note,.kv p,.case p,
+.gap-has p,.gap-add p,.hypo-body p,.q-item q{text-wrap:pretty}
+/* 編碼項目不在內部斷行 */
+.detail p.items .it{white-space:nowrap}
+
+/* 第 8 頁：讀法面板壓成單列，把高度讓給關係圖 */
+body.slide .pd-read{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 18px;padding:11px 20px}
+body.slide .pd-read h3{margin:0;font-size:14px}
+body.slide .pd-read .pd-eq{margin:0;line-height:1.6}
+body.slide .pd{max-height:470px}
+
+body.slide .pd{max-height:436px}
+body.slide .pd-slim{max-height:372px}
+
+/* 短區塊改 balance：兩三行均分，末行不會只剩零星字 */
+.lead,.chart-title,.era-rule,.era-name,.pos-ref,.pos-name,.case b,.card h3,
+.hypo-body b,.q-name,.kv b,.detail .when,.mx-cell span,.stat span,
+.tl-bot,.dv-name,.db-name,.idx-btn span,.list-what{text-wrap:balance}
+/* 長段落同樣均分，避免末行只剩三字以下 */
+.panel>p,.kv p,.detail .gist,.detail>p,.note,.cite,.case p,
+.gap-has p,.gap-add p,.hypo-body p,.q-item q{text-wrap:balance}
+
+/* 讀法面板在單選路徑時欄位較多，預留第二行高度 */
+body.slide .pd-read{min-height:46px}
+body.slide .pd{max-height:410px}
+
+/* 問卷題目分頁 */
+.qlist{display:grid;gap:0}
+.qrow{padding:15px 0;border-bottom:1px solid #EAF0F4}
+.qrow:first-child{padding-top:0}
+.qrow:last-child{border-bottom:0}
+.qhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:7px 14px;margin-bottom:8px}
+.qdim{font-family:var(--sans);font-size:12.5px;letter-spacing:.14em;padding:3px 10px;border:1px solid currentColor}
+.q-dv .qdim{color:var(--accent,#A8432A)}
+.q-budget .qdim{color:var(--k-budget)}
+.q-cn .qdim{color:var(--k-cn)}
+.q-us .qdim{color:var(--k-us)}
+.qname{font-size:15.5px;font-weight:500;letter-spacing:.1em}
+.qrow q{display:block;font-size:14.5px;line-height:2.05;color:var(--text);letter-spacing:.04em;text-wrap:balance}
+.qopts{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.qo{font-family:var(--sans);font-size:12.5px;color:var(--muted);border:1px solid var(--border);padding:3px 10px;border-radius:12px}
+
+/* 原文對照：顯示實際頁面，版面不會重排 */
+.dlg-body .pgimg{display:block;width:100%;max-width:820px;margin:0 auto;
+  border:1px solid var(--border);background:#fff}
+.dlg-body .pg{text-align:center}
+
+/* 事件清單（時間軸／制度史）字體 ×1.2 */
+body.slide .fig-tl .list-what,body.slide .fig-hx .list-what{font-size:15px;line-height:1.55}
+body.slide .fig-tl .list-when,body.slide .fig-hx .list-when,
+body.slide .fig-tl .list-tag,body.slide .fig-hx .list-tag{font-size:14.5px}
+body.slide .fig-tl .list-row,body.slide .fig-hx .list-row{padding:5px 0;grid-template-columns:88px 16px 1fr auto}
+body.slide .fig-tl .note,body.slide .fig-hx .note{font-size:14.5px;line-height:1.8}
+body.slide .fig-tl .detail h3,body.slide .fig-hx .detail h3{font-size:17px}
+body.slide .fig-tl .detail .when,body.slide .fig-hx .detail .when{font-size:14px}
+body.slide .fig-tl .detail p,body.slide .fig-hx .detail p{font-size:15px;line-height:1.95}
+body.slide .fig-hx .era-name{font-size:18px}
+body.slide .fig-hx .era-rule,body.slide .fig-hx .era-when,body.slide .fig-hx .era-score{font-size:14.5px}
+
+/* 中介變項題組 */
+.mq{display:grid;border-top:1px solid #EAF0F4}
+.mq-row{display:grid;grid-template-columns:86px 118px 1fr;gap:4px 14px;align-items:baseline;
+  padding:9px 0;border-bottom:1px solid #EAF0F4}
+.mq-row:last-child{border-bottom:0}
+.mq-dim{font-family:var(--sans);font-size:12.5px;letter-spacing:.12em;align-self:start}
+.mq-dim.mq-budget{color:var(--k-budget)}
+.mq-dim.mq-cn{color:var(--k-cn)}
+.mq-dim.mq-us{color:var(--k-us)}
+.mq-name{font-size:14px;font-weight:500;letter-spacing:.08em;align-self:start}
+.mq-body q{display:block;font-size:13.5px;line-height:1.85;color:var(--text);text-wrap:balance}
+.mq-opt{display:block;font-family:var(--sans);font-size:12.5px;color:var(--muted);margin-top:3px;letter-spacing:.04em}
+@media (max-width:900px){.mq-row{grid-template-columns:1fr}}
+body.slide .mq-row{padding:7px 0}
+body.slide .mq-body q{line-height:1.75}
+/* 研究設計頁：題組列再收 20px */
+body.slide .mq-row{padding:5px 0}
+body.slide .mq-body q{line-height:1.7;font-size:13px}
+body.slide .mq-opt{font-size:12px;margin-top:2px}
+body.slide .mq-name{font-size:13.5px}
+</style></head>
+<body class="slide">
+<div class="deco" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="tools"><button class="dlg-btn" id="b-tbl">完整表格</button><button class="dlg-btn" id="b-print">列印</button></div>
+<div class="stage"><div class="deckbox" id="deckbox"><section class="page" data-page="0" aria-label="封面"><div class="page-inner home"><h1>政黨認同與大罷免偏好</h1><p class="sub">檢驗政策態度的中介效果</p><div class="home-meta"><span>林文正</span><span>中央研究院社會學研究所 博士後研究</span><span>研討會發表稿　12–15 分鐘</span></div><div class="timeline" role="tablist" aria-label="章節"><button class="tl-node" data-go="1"><span class="tl-top">問題</span><span class="tl-dot" aria-hidden="true"></span><span class="tl-bot">罷免偏好只是政黨認同的投射嗎</span></button><button class="tl-node" data-go="2"><span class="tl-top">理論建構</span><span class="tl-dot" aria-hidden="true"></span><span class="tl-bot">制度目標 × 驅動邏輯的四種理想型</span></button><button class="tl-node" data-go="3"><span class="tl-top">臺灣脈絡</span><span class="tl-dot" aria-hidden="true"></span><span class="tl-bot">門檻三轉折與 2025 的混合型定位</span></button><button class="tl-node" data-go="6"><span class="tl-top">資料分析</span><span class="tl-dot" aria-hidden="true"></span><span class="tl-bot">係數吸收、路徑圖與 KHB 分解</span></button><button class="tl-node" data-go="10"><span class="tl-top">結論</span><span class="tl-dot" aria-hidden="true"></span><span class="tl-bot">不對稱中介與研究定位</span></button></div><p class="home-foot">點選上方節點進入章節　鍵盤 <kbd>←</kbd><kbd>→</kbd> 翻頁　<kbd>Home</kbd> 回封面　<kbd>T</kbd> 完整表格　<kbd>O</kbd> 原文對照　<kbd>Esc</kbd> 關閉視窗</p></div></section><section class="page s1" data-page="1" aria-label="罷免偏好只是政黨認同的投射嗎？"><div class="page-inner"><div class="page-head"><span class="page-dot" aria-hidden="true"></span><h2 class="page-title">罷免偏好只是政黨認同的投射嗎？</h2><span class="page-num">01 / 12</span></div><div class="panel"><p class="lead">2025 年臺灣迎來歷史上規模最大的罷免投票。本文問的是：政黨認同對罷免偏好的影響，是否經由預算衝突、中國因素與美國因素三類政策態度所中介，而各陣營的中介結構是否相同。</p></div><div class="fig"><div class="pd-wrap">
+<svg class="pd pd-slim" viewBox="0 0 1100 560" role="img" aria-label="政黨認同經由預算衝突、中國因素、美國因素三類政策態度影響大罷免偏好，另估直接效果。">
+<text class="pd-col2" x="110.0" y="26" text-anchor="middle"><tspan class="pd-colk">X</tspan><tspan class="pd-coln" dx="9">解釋變項</tspan></text><line class="pd-bandline" x1="242.0" y1="22" x2="261.0" y2="22"/><line class="pd-bandline" x1="283.0" y1="22" x2="298.0" y2="22"/><path class="pd-bandarrow" d="M298.0,18 L305.0,22 L298.0,26 Z"/><text class="pd-bandlab" x="272.0" y="26" text-anchor="middle">a</text><text class="pd-col2" x="524.0" y="26" text-anchor="middle"><tspan class="pd-colk">M</tspan><tspan class="pd-coln" dx="9">中介變項</tspan></text><line class="pd-bandline" x1="770.0" y1="22" x2="789.0" y2="22"/><line class="pd-bandline" x1="811.0" y1="22" x2="826.0" y2="22"/><path class="pd-bandarrow" d="M826.0,18 L833.0,22 L826.0,26 Z"/><text class="pd-bandlab" x="800.0" y="26" text-anchor="middle">b</text><text class="pd-col2" x="988.0" y="26" text-anchor="middle"><tspan class="pd-colk">Y</tspan><tspan class="pd-coln" dx="9">結果變項</tspan></text><line class="pd-rule" x1="20" y1="42" x2="1080" y2="42"/><rect class="pd-gbar g-budget" x="331" y="76.0" width="3" height="80.0"/><text class="pd-grp" x="344" y="76">預算衝突</text><rect class="pd-gbar g-cn" x="331" y="186.0" width="3" height="160.0"/><text class="pd-grp" x="344" y="186">中國因素</text><rect class="pd-gbar g-us" x="331" y="376.0" width="3" height="160.0"/><text class="pd-grp" x="344" y="376">美國因素</text><path class="pd-edge pos" stroke-width="1.7" d="M200,306 C304,306 240,116 344,116"/><path class="pd-arrow pos" transform="translate(344,116)" d="M-7,-4.2 L0,0 L-7,4.2 Z"/><path class="pd-edge pos" stroke-width="1.7" d="M704,116 C808,116 792,306 896,306"/><path class="pd-arrow pos" transform="translate(896,306)" d="M-7,-4.2 L0,0 L-7,4.2 Z"/><path class="pd-edge pos" stroke-width="1.7" d="M200,306 C304,306 240,226 344,226"/><path class="pd-arrow pos" transform="translate(344,226)" d="M-7,-4.2 L0,0 L-7,4.2 Z"/><path class="pd-edge pos" stroke-width="1.7" d="M704,226 C808,226 792,306 896,306"/><path class="pd-arrow pos" transform="translate(896,306)" d="M-7,-4.2 L0,0 L-7,4.2 Z"/><path class="pd-edge pos" stroke-width="1.7" d="M200,306 C304,306 240,306 344,306"/><path class="pd-arrow pos" transform="translate(344,306)" d="M-7,-4.2 L0,0 L-7,4.2 Z"/><path class="pd-edge pos" stroke-width="1.7" d="M704,306 C808,306 792,306 896,306"/><path class="pd-arrow pos" transform="translate(896,306)" d="M-7,-4.2 L0,0 L-7,4.2 Z"/><path class="pd-edge pos" stroke-width="1.7" d="M200,306 C304,306 240,416 344,416"/><path class="pd-arrow pos" transform="translate(344,416)" d="M-7,-4.2 L0,0 L-7,4.2 Z"/><path class="pd-edge pos" stroke-width="1.7" d="M704,416 C808,416 792,306 896,306"/><path class="pd-arrow pos" transform="translate(896,306)" d="M-7,-4.2 L0,0 L-7,4.2 Z"/><path class="pd-edge pos" stroke-width="1.7" d="M200,306 C304,306 240,496 344,496"/><path class="pd-arrow pos" transform="translate(344,496)" d="M-7,-4.2 L0,0 L-7,4.2 Z"/><path class="pd-edge pos" stroke-width="1.7" d="M704,496 C808,496 792,306 896,306"/><path class="pd-arrow pos" transform="translate(896,306)" d="M-7,-4.2 L0,0 L-7,4.2 Z"/><g class="pd-n " data-node="x"><rect class="pd-node" x="20" y="269.0" width="180" height="74" rx="2"/><text class="pd-nlab" x="110.0" y="304" text-anchor="middle">政黨認同</text><text class="pd-nsub" x="110.0" y="326" text-anchor="middle">泛綠／泛藍／民眾黨</text><rect class="pd-hit" x="20" y="269.0" width="180" height="74" rx="2"/></g><g class="pd-n " data-node="f0"><rect class="pd-node" x="344" y="90.0" width="360" height="52" rx="2"/><text class="pd-nlab" x="524.0" y="122" text-anchor="middle">立院刪凍預算</text><rect class="pd-hit" x="344" y="90.0" width="360" height="52" rx="2"/></g><g class="pd-n " data-node="f1"><rect class="pd-node" x="344" y="200.0" width="360" height="52" rx="2"/><text class="pd-nlab" x="524.0" y="232" text-anchor="middle">境外敵對勢力</text><rect class="pd-hit" x="344" y="200.0" width="360" height="52" rx="2"/></g><g class="pd-n " data-node="f2"><rect class="pd-node" x="344" y="280.0" width="360" height="52" rx="2"/><text class="pd-nlab" x="524.0" y="312" text-anchor="middle">中配六改四</text><rect class="pd-hit" x="344" y="280.0" width="360" height="52" rx="2"/></g><g class="pd-n " data-node="f3"><rect class="pd-node" x="344" y="390.0" width="360" height="52" rx="2"/><text class="pd-nlab" x="524.0" y="422" text-anchor="middle">對美關稅表現</text><rect class="pd-hit" x="344" y="390.0" width="360" height="52" rx="2"/></g><g class="pd-n " data-node="f4"><rect class="pd-node" x="344" y="470.0" width="360" height="52" rx="2"/><text class="pd-nlab" x="524.0" y="502" text-anchor="middle">美國出兵協防</text><rect class="pd-hit" x="344" y="470.0" width="360" height="52" rx="2"/></g><g class="pd-n " data-node="y"><rect class="pd-node" x="896" y="269.0" width="184" height="74" rx="2"/><text class="pd-nlab" x="988.0" y="304" text-anchor="middle">大罷免偏好</text><text class="pd-nsub" x="988.0" y="326" text-anchor="middle">贊成罷免活動</text><rect class="pd-hit" x="896" y="269.0" width="184" height="74" rx="2"/></g></svg>
+<div class="pd-legend">
+  <span>參考組為中立／無反應</span>
+  <span><b>a</b>　政黨認同對政策態度的作用</span>
+  <span><b>b</b>　政策態度對罷免偏好的作用</span>
+  <span><b>c′</b>　扣除中介後的直接效果（另估）</span>
+</div>
+</div></div><p class="cite">原文第 2、3、5、22 頁</p></div></section><section class="page s2" data-page="2" aria-label="理論建構　制度目標 × 驅動邏輯的四種理想型"><div class="page-inner"><div class="page-head"><span class="page-dot" aria-hidden="true"></span><h2 class="page-title">理論建構　制度目標 × 驅動邏輯的四種理想型</h2><span class="page-num">02 / 12</span></div><div class="fig fig-ideal">
+<div class="mx">
+  <span class="mx-corner"><em>驅動邏輯</em><i>制度目標</i></span>
+  <span class="mx-head">個人（掌權人／官員）</span><span class="mx-head">權力結構</span>
+  <span class="mx-side">回應性</span><button class="mx-cell" data-ideal="0" aria-pressed="false"><b>個人課責</b><span>個人失職、醜聞、財政赤字、怨恨政治</span></button><button class="mx-cell" data-ideal="2" aria-pressed="false"><b>結構性回應</b><span>城市規劃、環境運動、行政層級的變化</span></button>
+  <span class="mx-side">工具性</span><button class="mx-cell" data-ideal="1" aria-pressed="false"><b>個人替代</b><span>延續選舉競爭、黨派報復、意識形態對抗</span></button><button class="mx-cell" data-ideal="3" aria-pressed="false"><b>結構性鬥爭</b><span>打破制度僵局、翻轉議會多數</span></button>
+</div>
+<div class="detail detail-cases" id="ideal-detail" aria-live="polite"></div>
+<p class="cite">依原文表 1 重製。縱軸為驅動邏輯（垂直問責／工具性操作），橫軸為制度目標（換掉個人／重組權力結構）。點選任一型可展開比較案例。</p>
+<script type="application/json" id="ideal-data">[{"name": "個人課責", "logic": "回應性", "target": "個人（掌權人／官員）", "keys": "個人失職、醜聞、財政赤字、怨恨政治", "body": "責任可歸因於特定掌權人，個人行為本身即構成罷免的充分理由，屬初級功能。", "cases": [{"t": "杜伊斯堡，德國，2012", "b": "愛的大遊行踩踏事故造成 21 人死亡。市長 Sauerland 拒絕辭職，議會不信任動議未獲法定多數。既有制度管道全數失敗後，上一級的北萊茵—威斯特法倫邦為此修法允許公民發起罷免，最終以 85.8% 贊成率通過。"}, {"t": "阿久根，日本", "b": "市長竹原信一單方面削減公務員獎金、公開公務員薪資、反覆繞過議會行使緊急條款。議會兩度通過不信任案，他均以解散議會拒絕辭職，市民最終發動罷免將其解職。"}, {"t": "奧勒岡，美國", "b": "州長 Kitzhaber 因女友醜聞面臨罷免連署壓力，在該州缺乏彈劾制度的條件下，於投票前主動辭職。程序未完成仍產生制約，即 Vandamme 所稱的威脅效應。"}]}, {"name": "個人替代", "logic": "工具性", "target": "個人（掌權人／官員）", "keys": "延續選舉競爭、黨派報復、意識形態對抗", "body": "目標仍是撤換個人，但驅動力已轉向權力奪取。表面上是不滿施政表現，組織資源、時機選擇與戰略意圖均指向權力重分配。", "cases": [{"t": "利馬，秘魯，2013", "b": "Villarán 市長以 0.83% 微差當選後推動公共運輸管制、支持性少數權益、強制遷移大型傳統市場，引發保守教會與利益團體反彈。但罷免發起人是前任市長 Castañeda Lossio 的政治幕僚 Gutiérrez，操作市長與全體市議員的集體罷免來奪回權力。她留任，所屬聯盟仍有 22 名議員遭罷免，前任市長下屆回任並取得議會多數。"}, {"t": "華沙，波蘭，2013", "b": "法律與正義黨先於 4 月在艾爾布蘭格成功罷免執政黨公民綱領黨市長，確認動員能力後，於全國大選前一年挑戰首都市長兼該黨副領導人 Gronkiewicz-Waltz。她在壓低投票率的反動員下留任，但該黨 2015 年贏得全國大選，側面檢證罷免的選舉試探功能。"}, {"t": "臺灣的對照", "b": "2020 年韓國瑜案雖觸發買家懊悔，罷免方的組織資源、議題框架與動員時機卻與民進黨地方部署高度重合；2021 年王浩宇、陳柏惟案則加深此型在臺灣的實踐。"}]}, {"name": "結構性回應", "logic": "回應性", "target": "權力結構", "keys": "城市規劃、環境運動、行政層級的變化", "body": "目標不只是個人去留，還包括對特定政策或制度安排的不滿。政策偏好缺乏有效出口時，罷免程序被迫承擔公投的回應功能，屬次級功能。", "cases": [{"t": "卷町，日本，1996", "b": "居民為阻止核電廠興建，在親核派町長拒絕舉行政策公投後轉而發動罷免連署。町長在連署過程中辭職，新任首長隨即通過地方公投條例。罷免效果遠超「換掉市長」，它改變了整個政治決策的制度環境。"}, {"t": "日本 1989–2018，106 件", "b": "Okamoto 與 Serdült（2020）分類：個人課責 25 件、政策公投性質 55 件、無法歸類 26 件。2004–2006 年的高峰幾乎完全由「平成大合併」驅動，財政誘因與行政權衝突、地方財政利益重分配、身分認同的抵抗交織。"}, {"t": "臺灣的對照", "b": "1994 年核四爭議：三場反核四公投獲多數支持卻被以欠缺法源為由擱置，遂轉向罷免五位擁核立委，呈現「以罷免代公投」的策略性需求。"}]}, {"name": "結構性鬥爭", "logic": "工具性", "target": "權力結構", "keys": "打破制度僵局、翻轉議會多數", "body": "全面重組權力結構，包括翻轉議會多數、改變行政與立法的力量對比。罷免規模可超越個別掌權人，針對整個機構或多席次代議士群體。", "cases": [{"t": "名古屋，日本", "b": "市長河村隆之推動減稅與削減議員案遭議會杯葛，減稅案被限縮為一年效期後，他發動議會解散罷免，蒐集逾 46 萬份連署成功解散議會並重新當選，其主導的「減稅日本黨」在新議會成為第一大黨。罷免對象不是特定議員，而是整個議會。"}, {"t": "威斯康辛，美國，2011–2012", "b": "州長 Walker 的預算修正案實質剝奪公共部門勞工集體談判權、大幅提高自付比例、取消工會會費自動扣繳。兩黨在席次接近的州議會相互發動罷免，州長、副州長與 13 名議員（9 共和、4 民主）相繼遭遇罷免挑戰。"}, {"t": "跨案例證據", "b": "Spivak（2020）整理 1981–2019 年美國州層級 39 件罷免案，其中 28 件的驅動力在於翻轉議會多數的控制權，而非懲罰個別議員的施政表現。"}]}]</script>
+</div><p class="cite">原文第 6、7、8、9、10、11、12 頁</p></div></section><section class="page s3" data-page="3" aria-label="臺灣脈絡 ①　門檻的三個轉折"><div class="page-inner"><div class="page-head"><span class="page-dot" aria-hidden="true"></span><h2 class="page-title">臺灣脈絡 ①　門檻的三個轉折</h2><span class="page-num">03 / 12</span></div><div class="fig fig-era">
+<div class="eras"><button class="era k-law" data-era="0" aria-pressed="false"><span class="era-when">1994–2015</span><span class="era-name">鳥籠期</span><span class="era-rule">雙二一制：投票率須過半、同意票須過半</span><span class="era-score">罷免通過 <b>0</b> / 3</span></button><button class="era k-pass" data-era="1" aria-pressed="false"><span class="era-when">2016–2024</span><span class="era-name">鬆綁期</span><span class="era-rule">同意票多於不同意票，且達原選區總人數 1/4</span><span class="era-score">罷免通過 <b>3</b> / 6</span></button><button class="era k-fail" data-era="2" aria-pressed="false"><span class="era-when">2024.12–</span><span class="era-name">加嚴期</span><span class="era-rule">維持 1/4 門檻，連署須附身分證正反面影本</span><span class="era-score">本文研究時點</span></button></div>
+<div class="detail" id="era-detail" aria-live="polite"></div>
+<p class="cite">資料來源：中選會網站；制度成本—啟動意願機制見 Geissel and Jung 2018；Welp and Whitehead 2020</p>
+<script type="application/json" id="era-data">[{"when": "1994–2015", "name": "鳥籠期", "rule": "雙二一制：投票率須過半、同意票須過半", "body": "為因應核四罷免案，1994 年 10 月立法院將門檻提高至選舉人總數 13% 提議、投票率過半且同意票過半。成功條件遠高於原始當選門檻，形成對現任者的雙重保護，制度封鎖效應延續近二十年。", "cases": [{"t": "擁核立委罷免案　1994.11 / 1995.01", "b": "韓國瑜、林志嘉、洪秀柱、詹裕仁（台北縣）投票率僅約 21%；魏鏞（台北市）投票率未達 50%。全數不通過。"}, {"t": "蔡正元　2015.02", "b": "割闌尾計畫發起。同意票高達 97.22%，投票率僅 24.98%，未達門檻而不通過。"}], "pass": 0, "total": 3}, {"when": "2016–2024", "name": "鬆綁期", "rule": "同意票多於不同意票，且達原選區總人數 1/4", "body": "2016 年 11 月三讀取消「不得宣傳」禁令，連署門檻下修為選舉人總數 10%、連署天數加倍（立委 60 天）。符合「制度成本—啟動意願」的因果機制：門檻下修激發更頻繁的罷免嘗試，也讓政黨發展出系統性反向動員。", "cases": [{"t": "黃國昌　2017.12", "b": "修法後首例。同意多於不同意，但僅占選區人數 19%，未達 25% 門檻，不通過。"}, {"t": "韓國瑜　2020.06", "b": "投票率 42%，同意 939,090 票（97.40%），超越其當選票數 892,545 票。臺灣首位遭罷免成功的直轄市長。"}, {"t": "王浩宇　2021.01", "b": "投票率 28.14%、同意 92.23%。首位遭罷免成功的六都市議員。"}, {"t": "黃捷　2021.02", "b": "投票率 41.54%，同意 45.80%、不同意 54.20%，不通過。"}, {"t": "陳柏惟　2021.10", "b": "投票率 51.72%（修法後最高），同意 51.48%。首位遭罷免成功的立法委員。"}, {"t": "林昶佐　2022.01", "b": "投票率 41.93%，同意 55.84%，但同意票數未達選區總人數 1/4，不通過。"}], "pass": 3, "total": 6}, {"when": "2024.12–", "name": "加嚴期", "rule": "維持 1/4 門檻，連署須附身分證正反面影本", "body": "國民黨原擬將同意門檻提高至 50%，為避免社會反彈並確保民眾黨支持，最後改為以連署形式要件增加難度。即便如此仍未能阻止後續罷免潮。", "cases": [{"t": "2025 大罷免", "b": "31 位國民黨籍立委（24 位於 7/26、7 位於 8/23 投票）與 1 位民進黨籍南投縣議員（7/13）進入投票階段。連署過程出現偽造與死亡連署爭議。"}], "pass": null, "total": null}]</script>
+</div><p class="cite">原文第 13、14、15、16、17、18 頁</p></div></section><section class="page s3" data-page="4" aria-label="臺灣脈絡 ②　2024–2025 三條議題軸線疊加"><div class="page-inner"><div class="page-head"><span class="page-dot" aria-hidden="true"></span><h2 class="page-title">臺灣脈絡 ②　2024–2025 三條議題軸線疊加</h2><span class="page-num">04 / 12</span></div><div class="fig fig-tl"><div class="panel"><div class="list"><button class="list-row k-inst" data-tl="0" aria-pressed="false"><span class="list-when">2024.01</span><span class="list-mark" aria-hidden="true"></span><span class="list-what">三黨不過半</span><span class="list-tag">制度衝突</span></button><button class="list-row k-cn" data-tl="1" aria-pressed="false"><span class="list-when">2024.04</span><span class="list-mark" aria-hidden="true"></span><span class="list-what">傅崐萁首次赴中</span><span class="list-tag">中國因素</span></button><button class="list-row k-inst" data-tl="2" aria-pressed="false"><span class="list-when">2024.05</span><span class="list-mark" aria-hidden="true"></span><span class="list-what">擴權五法三讀・青鳥行動</span><span class="list-tag">制度衝突</span></button><button class="list-row k-inst" data-tl="3" aria-pressed="false"><span class="list-when">2024.10</span><span class="list-mark" aria-hidden="true"></span><span class="list-what">憲法法庭宣告多數條文違憲</span><span class="list-tag">制度衝突</span></button><button class="list-row k-inst" data-tl="4" aria-pressed="false"><span class="list-when">2024.12</span><span class="list-mark" aria-hidden="true"></span><span class="list-what">財劃法、憲訴法、選罷法與總預算刪凍</span><span class="list-tag">制度衝突</span></button><button class="list-row k-cn" data-tl="5" aria-pressed="false"><span class="list-when">2025.01</span><span class="list-mark" aria-hidden="true"></span><span class="list-what">中配六改四再次提案</span><span class="list-tag">中國因素</span></button><button class="list-row k-inst" data-tl="6" aria-pressed="false"><span class="list-when">2025.02</span><span class="list-mark" aria-hidden="true"></span><span class="list-what">罷免案陸續送件</span><span class="list-tag">制度衝突</span></button><button class="list-row k-cn" data-tl="7" aria-pressed="false"><span class="list-when">2025.03</span><span class="list-mark" aria-hidden="true"></span><span class="list-what">中國被認定為境外敵對勢力</span><span class="list-tag">中國因素</span></button><button class="list-row k-us" data-tl="8" aria-pressed="false"><span class="list-when">2025.04</span><span class="list-mark" aria-hidden="true"></span><span class="list-what">解放日關稅</span><span class="list-tag">美國因素</span></button><button class="list-row k-survey" data-tl="9" aria-pressed="false"><span class="list-when">2025.06</span><span class="list-mark" aria-hidden="true"></span><span class="list-what">社會意向調查執行</span><span class="list-tag">調查時點</span></button><button class="list-row k-inst" data-tl="10" aria-pressed="false"><span class="list-when">2025.07</span><span class="list-mark" aria-hidden="true"></span><span class="list-what">第一波罷免投票</span><span class="list-tag">制度衝突</span></button><button class="list-row k-inst" data-tl="11" aria-pressed="false"><span class="list-when">2025.08</span><span class="list-mark" aria-hidden="true"></span><span class="list-what">第二波罷免投票</span><span class="list-tag">制度衝突</span></button></div><p class="note">三條議題軸線在罷免動員過程中逐步疊加：制度衝突由國會格局引發，中國因素自外向內滲透並被轉化為抗中框架，美國因素則自外向內施壓並被在野陣營轉化為競爭資源。</p></div><div class="detail" id="tl-detail" aria-live="polite"></div><script type="application/json" id="tl-data">[{"when": "2024.01", "title": "三黨不過半", "body": "總統大選後民進黨 51 席、國民黨 52 席、民眾黨 8 席，形成朝小野大。", "tag": "制度衝突"}, {"when": "2024.04", "title": "傅崐萁首次赴中", "body": "未報備情況下與中共政治常委王滬寧、國台辦主任宋濤見面，返台後推動國會職權修法等爭議修正案。", "tag": "中國因素"}, {"when": "2024.05", "title": "擴權五法三讀・青鳥行動", "body": "數萬人上街仍未能阻止法案通過，反映公民運動在朝小野大格局中的侷限。", "tag": "制度衝突"}, {"when": "2024.10", "title": "憲法法庭宣告多數條文違憲", "body": "在野聯盟仍持續三讀通過多項爭議法案。", "tag": "制度衝突"}, {"when": "2024.12", "title": "財劃法、憲訴法、選罷法與總預算刪凍", "body": "國防預算削減引發民主盟友不安；大法官人選全軍覆沒，憲法法庭陷入空窗期。冬季青鳥抗爭無果。", "tag": "制度衝突"}, {"when": "2025.01", "title": "中配六改四再次提案", "body": "縮短中國大陸籍配偶取得身分證時間，觸及臺灣社會對中國滲透的敏感神經。", "tag": "中國因素"}, {"when": "2025.02", "title": "罷免案陸續送件", "body": "國民黨 34 位立委、無黨籍 1 位、前民眾黨籍 1 位市長進入第二階段；國民黨亦反動員罷免泛綠 15 位立委與 8 位議員。", "tag": "制度衝突"}, {"when": "2025.03", "title": "中國被認定為境外敵對勢力", "body": "賴清德召開國安高層會議，明確將中國定義為《反滲透法》所指涉的境外敵對勢力。", "tag": "中國因素"}, {"when": "2025.04", "title": "解放日關稅", "body": "4 月 2 日川普宣布對等關稅，對臺灣外貿經濟造成衝擊，成為反罷免陣營主要的輿論戰場。同月又接連傳出共諜滲透案件。", "tag": "美國因素"}, {"when": "2025.06", "title": "社會意向調查執行", "body": "6 月 2 日至 22 日電話訪問 1,239 人，位於投票前約一個月。", "tag": "調查時點"}, {"when": "2025.07", "title": "第一波罷免投票", "body": "7 月 26 日 24 位國民黨籍立委投票；7 月 13 日南投縣議員投票。", "tag": "制度衝突"}, {"when": "2025.08", "title": "第二波罷免投票", "body": "8 月 23 日 7 位國民黨籍立委投票。", "tag": "制度衝突"}]</script></div><p class="cite">原文第 4、5、20、21 頁</p></div></section><section class="page s3" data-page="5" aria-label="臺灣脈絡 ③　2025 大罷免是混合型"><div class="page-inner"><div class="page-head"><span class="page-dot" aria-hidden="true"></span><h2 class="page-title">臺灣脈絡 ③　2025 大罷免是混合型</h2><span class="page-num">05 / 12</span></div><div class="panel"><p class="lead">延續個人課責，核心卻是重組國會權力結構的結構性鬥爭。</p></div><div class="fig fig-rs"><div class="panel">
+<p class="chart-title">九項主題共 285 次提及（長條＝次數，右欄＝占比）</p>
+<div class="bars"><p class="ctl-lab" style="margin:12px 0 7px">個人課責</p><button class="bar-row" data-rs="0" style="width:100%;text-align:left"><span class="bar-lab">問政</span><span class="bar-track"><span class="bar-fill f-c5" style="transform:scaleX(1.0000)"></span></span><span class="bar-val">83</span><span class="bar-beta">29.1%</span></button><button class="bar-row" data-rs="1" style="width:100%;text-align:left"><span class="bar-lab">貪污</span><span class="bar-track"><span class="bar-fill f-c5" style="transform:scaleX(0.1205)"></span></span><span class="bar-val">10</span><span class="bar-beta">3.5%</span></button><button class="bar-row" data-rs="2" style="width:100%;text-align:left"><span class="bar-lab">性別歧視</span><span class="bar-track"><span class="bar-fill f-c5" style="transform:scaleX(0.0723)"></span></span><span class="bar-val">6</span><span class="bar-beta">2.1%</span></button><p class="ctl-lab" style="margin:12px 0 7px">結構性回應</p><button class="bar-row" data-rs="3" style="width:100%;text-align:left"><span class="bar-lab">社會政策</span><span class="bar-track"><span class="bar-fill f-c3" style="transform:scaleX(0.3133)"></span></span><span class="bar-val">26</span><span class="bar-beta">9.1%</span></button><button class="bar-row" data-rs="4" style="width:100%;text-align:left"><span class="bar-lab">利益分配</span><span class="bar-track"><span class="bar-fill f-c3" style="transform:scaleX(0.6265)"></span></span><span class="bar-val">52</span><span class="bar-beta">18.2%</span></button><button class="bar-row" data-rs="5" style="width:100%;text-align:left"><span class="bar-lab">能源</span><span class="bar-track"><span class="bar-fill f-c3" style="transform:scaleX(0.0843)"></span></span><span class="bar-val">7</span><span class="bar-beta">2.5%</span></button><p class="ctl-lab" style="margin:12px 0 7px">結構性鬥爭</p><button class="bar-row" data-rs="6" style="width:100%;text-align:left"><span class="bar-lab">擴權</span><span class="bar-track"><span class="bar-fill f-cn" style="transform:scaleX(0.6145)"></span></span><span class="bar-val">51</span><span class="bar-beta">17.9%</span></button><p class="ctl-lab" style="margin:12px 0 7px">中國與軍事</p><button class="bar-row" data-rs="7" style="width:100%;text-align:left"><span class="bar-lab">中國因素</span><span class="bar-track"><span class="bar-fill f-c1" style="transform:scaleX(0.3855)"></span></span><span class="bar-val">32</span><span class="bar-beta">11.2%</span></button><button class="bar-row" data-rs="8" style="width:100%;text-align:left"><span class="bar-lab">軍事／國防</span><span class="bar-track"><span class="bar-fill f-c1" style="transform:scaleX(0.2169)"></span></span><span class="bar-val">18</span><span class="bar-beta">6.3%</span></button></div>
+</div>
+<div class="detail" id="rs-detail" aria-live="polite"></div>
+<div class="panel rs-foot">
+<p class="note">以中選會公告的 31 位立委罷免理由書為文本。就立委涵蓋範圍看，個人課責與結構性回應幾乎涵蓋所有立委；就主題次數看則呈現混合結構。</p>
+<p class="cite">資料來源：中央選舉委員會。以 Python 搭配 BeautifulSoup 半自動抽取，僅納入中選會認證之罷免理由書（排除總結語段落），不含答辯書與程序性資訊。完整編碼與涉及立委名單見原文附表 1（第 39–40 頁）。</p>
+</div>
+<script type="application/json" id="rs-data">[{"code": "P1", "name": "問政", "n": 83, "k": 30, "grp": "個人課責", "items": "質詢、議事行為、議事規則濫用、議事不當、職權誠信、違背選前承諾、黨意、散播假訊息、收割政績、助理問題、洩漏機密、肢體暴力", "pct": 29.1}, {"code": "P2", "name": "貪污", "n": 10, "k": 10, "grp": "個人課責", "items": "家族利益、個人財產、利益輸送、超貸、家族盤踞、違法建築、政商不分", "pct": 3.5}, {"code": "P3", "name": "性別歧視", "n": 6, "k": 5, "grp": "個人課責", "items": "歧視性言論、粗俗、辱罵、霸凌", "pct": 2.1}, {"code": "R1", "name": "社會政策", "n": 26, "k": 17, "grp": "結構性回應", "items": "年金、健保、長照、社福、世代不公、教育、文化政策", "pct": 9.1}, {"code": "R2", "name": "利益分配", "n": 52, "k": 30, "grp": "結構性回應", "items": "預算刪減/凍結、地方建設、選區服務、阻礙產業、原住民、通勤", "pct": 18.2}, {"code": "R3", "name": "能源", "n": 7, "k": 7, "grp": "結構性回應", "items": "核四、中火、能源轉型、台電預算", "pct": 2.5}, {"code": "S1", "name": "擴權", "n": 51, "k": 27, "grp": "結構性鬥爭", "items": "國會擴權法、藐視國會罪、憲訴法、杯葛大法官、選罷法、財劃法、議事黑箱", "pct": 17.9}, {"code": "X1", "name": "中國因素", "n": 32, "k": 20, "grp": "中國與軍事", "items": "赴中、統戰、九二、中配、引中資、和平協議、TikTok", "pct": 11.2}, {"code": "X2", "name": "軍事／國防", "n": 18, "k": 13, "grp": "中國與軍事", "items": "弱化國防、F-16、潛艦、全民防衛、洩漏軍事機密、淡化主權", "pct": 6.3}]</script>
+</div><p class="cite">原文第 19、35、36、39、40 頁</p></div></section><section class="page s4" data-page="6" aria-label="研究設計　投票前一個月的全國調查"><div class="page-inner"><div class="page-head"><span class="page-dot" aria-hidden="true"></span><h2 class="page-title">研究設計　投票前一個月的全國調查</h2><span class="page-num">06 / 12</span></div><div class="panel"><div class="kv"><div><b>資料與依變項</b><p>2025 年第一次社會意向調查，6 月 2 日至 22 日電訪 1,239 人，位於 7 月 26 日投票前約一個月。依變項為對全台立委罷免活動的贊成程度：全國樣本贊成 35.6%、不贊成 45.2%。</p></div><div><b>解釋變項與遺漏值</b><p>政黨認同四類：泛綠 37.8%、泛藍 23.5%、民眾黨 9.3%，以中立／無反應 29.4% 為參考組。五項議題的遺漏嵌入各陣營的核心動員框架（Pseudo R² 0.138–0.216），故改採 MICE 製作 30 組插補資料集，以 KHB 分解，並用完全排除法（N=655）交叉驗證多重插補（N=981）。</p></div></div></div><div class="fig"><div class="panel">
+<p class="panel-label">中介變項題組　三面向五道問項（照問卷原文）</p>
+<div class="mq"><div class="mq-row"><span class="mq-dim mq-budget">預算衝突</span><span class="mq-name">立院刪凍預算</span><span class="mq-body"><q>在立法院，國民黨和民眾黨針對今年度中央政府總預算提出的刪減和凍結案，請問您贊不贊成？</q><em class="mq-opt">非常贊成／贊成／不太贊成／非常不贊成</em></span></div><div class="mq-row"><span class="mq-dim mq-cn">中國因素</span><span class="mq-name">境外敵對勢力</span><span class="mq-body"><q>今年三月賴清德總統召開國安高層會議，認定中國是反滲透法所定義的「境外敵對勢力」，請問您同不同意這個說法？</q><em class="mq-opt">非常同意／同意／不太同意／非常不同意</em></span></div><div class="mq-row"><span class="mq-dim"></span><span class="mq-name">中配六改四</span><span class="mq-body"><q>根據台灣現在的法規，中國大陸籍配偶要取得中華民國身分證需要六年的時間，有立委提案要縮短為四年，有人則說要延長為八年，請問你認為應該要縮短、延長還是維持不變？</q><em class="mq-opt">縮短／維持不變／延長</em></span></div><div class="mq-row"><span class="mq-dim mq-us">美國因素</span><span class="mq-name">對美關稅表現</span><span class="mq-body"><q>請問您對賴清德政府在應對美國川普政府關稅問題上的表現滿不滿意？</q><em class="mq-opt">非常滿意／滿意／不太滿意／非常不滿意</em></span></div><div class="mq-row"><span class="mq-dim"></span><span class="mq-name">美國出兵協防</span><span class="mq-body"><q>大家都希望兩岸能維持和平。萬一中國大陸以武力攻打台灣，請問您認為美國會不會出兵協助台灣？</q><em class="mq-opt">會／不會</em></span></div></div>
+</div></div><div class="panel"><p class="cite">三題未通過平行迴歸假定，估計時由四點量表合併為二分；中配六改四採有序邏輯迴歸。各題另有「無反應／不知道」。完整選項與表 3 次數分配按 T 開啟「完整表格」視窗。</p></div><p class="cite">原文第 22、23、24、25、27、28 頁</p></div></section><section class="page s4" data-page="7" aria-label="資料分析 ①　政黨認同的係數被政策態度吸收"><div class="page-inner"><div class="page-head"><span class="page-dot" aria-hidden="true"></span><h2 class="page-title">資料分析 ①　政黨認同的係數被政策態度吸收</h2><span class="page-num">07 / 12</span></div><div class="fig fig-fr"><div class="panel">
+<p class="chart-title">政黨認同係數隨政策態度納入而減弱　二分勝算對數迴歸，多重插補 30 組，N=981</p>
+<svg class="chart forest" viewBox="0 0 1040 444" role="img" aria-label="三個陣營在五個模型下的政黨認同係數與 95% 信賴區間。泛綠自 2.168 降至 1.235，泛藍自 -1.547 升至 -0.806，民眾黨自 -0.578 變為 0.070 且失去顯著。">
+<g class="fr-legend"><circle class="fr-dot" cx="216" cy="16" r="4.2"/><text class="fr-lgd" x="228" y="20">點估計</text><line class="fr-ci" x1="302" y1="16" x2="338" y2="16"/><line class="fr-cap" x1="302" y1="11" x2="302" y2="21"/><line class="fr-cap" x1="338" y1="11" x2="338" y2="21"/><text class="fr-lgd" x="348" y="20">95% 信賴區間</text></g><line class="fr-grid" x1="313.7" y1="30" x2="313.7" y2="410"/><line class="fr-grid" x1="443.4" y1="30" x2="443.4" y2="410"/><line class="fr-zero" x1="573.0" y1="30" x2="573.0" y2="410"/><line class="fr-grid" x1="702.6" y1="30" x2="702.6" y2="410"/><line class="fr-grid" x1="832.3" y1="30" x2="832.3" y2="410"/><line class="fr-axis" x1="210" y1="410" x2="936" y2="410"/><text class="fr-tick" x="313.7" y="426" text-anchor="middle">-2</text><text class="fr-tick" x="443.4" y="426" text-anchor="middle">-1</text><text class="fr-tick" x="573.0" y="426" text-anchor="middle">0</text><text class="fr-tick" x="702.6" y="426" text-anchor="middle">+1</text><text class="fr-tick" x="832.3" y="426" text-anchor="middle">+2</text><text class="fr-axlab" x="573.0" y="442" text-anchor="middle">政黨認同的迴歸係數（對數勝算），參考組為中立／無反應</text><text class="fr-head" x="6" y="44">泛綠</text><g class="fr-row fr-green" data-fm="0"><text class="fr-lab" x="24" y="62">M1 政黨因素</text><line class="fr-ci" x1="794.1" y1="58" x2="914.0" y2="58"/><line class="fr-cap" x1="794.1" y1="54" x2="794.1" y2="62"/><line class="fr-cap" x1="914.0" y1="54" x2="914.0" y2="62"/><circle class="fr-dot" cx="854.1" cy="58" r="4.2"/><text class="fr-val" x="1034" y="62" text-anchor="end">2.168***<tspan class="fr-se" dx="6">(0.236)</tspan></text></g><g class="fr-row fr-green" data-fm="1"><text class="fr-lab" x="24" y="80">M2 預算衝突</text><line class="fr-ci" x1="758.2" y1="76" x2="883.3" y2="76"/><line class="fr-cap" x1="758.2" y1="72" x2="758.2" y2="80"/><line class="fr-cap" x1="883.3" y1="72" x2="883.3" y2="80"/><circle class="fr-dot" cx="820.7" cy="76" r="4.2"/><text class="fr-val" x="1034" y="80" text-anchor="end">1.911***<tspan class="fr-se" dx="6">(0.246)</tspan></text></g><g class="fr-row fr-green" data-fm="2"><text class="fr-lab" x="24" y="98">M3 中國因素</text><line class="fr-ci" x1="738.5" y1="94" x2="869.6" y2="94"/><line class="fr-cap" x1="738.5" y1="90" x2="738.5" y2="98"/><line class="fr-cap" x1="869.6" y1="90" x2="869.6" y2="98"/><circle class="fr-dot" cx="804.0" cy="94" r="4.2"/><text class="fr-val" x="1034" y="98" text-anchor="end">1.782***<tspan class="fr-se" dx="6">(0.258)</tspan></text></g><g class="fr-row fr-green" data-fm="3"><text class="fr-lab" x="24" y="116">M4 美國因素</text><line class="fr-ci" x1="694.8" y1="112" x2="836.0" y2="112"/><line class="fr-cap" x1="694.8" y1="108" x2="694.8" y2="116"/><line class="fr-cap" x1="836.0" y1="108" x2="836.0" y2="116"/><circle class="fr-dot" cx="765.4" cy="112" r="4.2"/><text class="fr-val" x="1034" y="116" text-anchor="end">1.484***<tspan class="fr-se" dx="6">(0.278)</tspan></text></g><g class="fr-row fr-green" data-fm="4"><text class="fr-lab" x="24" y="134">M5 全模型</text><line class="fr-ci" x1="656.6" y1="130" x2="809.6" y2="130"/><line class="fr-cap" x1="656.6" y1="126" x2="656.6" y2="134"/><line class="fr-cap" x1="809.6" y1="126" x2="809.6" y2="134"/><circle class="fr-dot" cx="733.1" cy="130" r="4.2"/><text class="fr-val" x="1034" y="134" text-anchor="end">1.235***<tspan class="fr-se" dx="6">(0.301)</tspan></text></g><text class="fr-head" x="6" y="166">泛藍</text><g class="fr-row fr-blue" data-fm="0"><text class="fr-lab" x="24" y="184">M1 政黨因素</text><line class="fr-ci" x1="289.1" y1="180" x2="455.8" y2="180"/><line class="fr-cap" x1="289.1" y1="176" x2="289.1" y2="184"/><line class="fr-cap" x1="455.8" y1="176" x2="455.8" y2="184"/><circle class="fr-dot" cx="372.4" cy="180" r="4.2"/><text class="fr-val" x="1034" y="184" text-anchor="end">-1.547***<tspan class="fr-se" dx="6">(0.328)</tspan></text></g><g class="fr-row fr-blue" data-fm="1"><text class="fr-lab" x="24" y="202">M2 預算衝突</text><line class="fr-ci" x1="320.1" y1="198" x2="487.8" y2="198"/><line class="fr-cap" x1="320.1" y1="194" x2="320.1" y2="202"/><line class="fr-cap" x1="487.8" y1="194" x2="487.8" y2="202"/><circle class="fr-dot" cx="403.9" cy="198" r="4.2"/><text class="fr-val" x="1034" y="202" text-anchor="end">-1.304***<tspan class="fr-se" dx="6">(0.330)</tspan></text></g><g class="fr-row fr-blue" data-fm="2"><text class="fr-lab" x="24" y="220">M3 中國因素</text><line class="fr-ci" x1="339.6" y1="216" x2="513.4" y2="216"/><line class="fr-cap" x1="339.6" y1="212" x2="339.6" y2="220"/><line class="fr-cap" x1="513.4" y1="212" x2="513.4" y2="220"/><circle class="fr-dot" cx="426.5" cy="216" r="4.2"/><text class="fr-val" x="1034" y="220" text-anchor="end">-1.130***<tspan class="fr-se" dx="6">(0.342)</tspan></text></g><g class="fr-row fr-blue" data-fm="3"><text class="fr-lab" x="24" y="238">M4 美國因素</text><line class="fr-ci" x1="333.1" y1="234" x2="514.5" y2="234"/><line class="fr-cap" x1="333.1" y1="230" x2="333.1" y2="238"/><line class="fr-cap" x1="514.5" y1="230" x2="514.5" y2="238"/><circle class="fr-dot" cx="423.8" cy="234" r="4.2"/><text class="fr-val" x="1034" y="238" text-anchor="end">-1.151**<tspan class="fr-se" dx="6">(0.357)</tspan></text></g><g class="fr-row fr-blue" data-fm="4"><text class="fr-lab" x="24" y="256">M5 全模型</text><line class="fr-ci" x1="376.5" y1="252" x2="560.5" y2="252"/><line class="fr-cap" x1="376.5" y1="248" x2="376.5" y2="256"/><line class="fr-cap" x1="560.5" y1="248" x2="560.5" y2="256"/><circle class="fr-dot" cx="468.5" cy="252" r="4.2"/><text class="fr-val" x="1034" y="256" text-anchor="end">-0.806*<tspan class="fr-se" dx="6">(0.362)</tspan></text></g><text class="fr-head" x="6" y="288">民眾黨</text><g class="fr-row fr-tpp" data-fm="0"><text class="fr-lab" x="24" y="306">M1 政黨因素</text><line class="fr-ci" x1="417.5" y1="302" x2="578.6" y2="302"/><line class="fr-cap" x1="417.5" y1="298" x2="417.5" y2="306"/><line class="fr-cap" x1="578.6" y1="298" x2="578.6" y2="306"/><circle class="fr-dot" cx="498.1" cy="302" r="4.2"/><text class="fr-val" x="1034" y="306" text-anchor="end">-0.578+<tspan class="fr-se" dx="6">(0.317)</tspan></text></g><g class="fr-row fr-tpp ns" data-fm="1"><text class="fr-lab" x="24" y="324">M2 預算衝突</text><line class="fr-ci" x1="470.8" y1="320" x2="640.0" y2="320"/><line class="fr-cap" x1="470.8" y1="316" x2="470.8" y2="324"/><line class="fr-cap" x1="640.0" y1="316" x2="640.0" y2="324"/><circle class="fr-dot" cx="555.4" cy="320" r="4.2"/><text class="fr-val" x="1034" y="324" text-anchor="end">-0.136<tspan class="fr-se" dx="6">(0.333)</tspan></text></g><g class="fr-row fr-tpp ns" data-fm="2"><text class="fr-lab" x="24" y="342">M3 中國因素</text><line class="fr-ci" x1="444.8" y1="338" x2="622.1" y2="338"/><line class="fr-cap" x1="444.8" y1="334" x2="444.8" y2="342"/><line class="fr-cap" x1="622.1" y1="334" x2="622.1" y2="342"/><circle class="fr-dot" cx="533.5" cy="338" r="4.2"/><text class="fr-val" x="1034" y="342" text-anchor="end">-0.305<tspan class="fr-se" dx="6">(0.349)</tspan></text></g><g class="fr-row fr-tpp ns" data-fm="3"><text class="fr-lab" x="24" y="360">M4 美國因素</text><line class="fr-ci" x1="460.0" y1="356" x2="641.9" y2="356"/><line class="fr-cap" x1="460.0" y1="352" x2="460.0" y2="360"/><line class="fr-cap" x1="641.9" y1="352" x2="641.9" y2="360"/><circle class="fr-dot" cx="551.0" cy="356" r="4.2"/><text class="fr-val" x="1034" y="360" text-anchor="end">-0.170<tspan class="fr-se" dx="6">(0.358)</tspan></text></g><g class="fr-row fr-tpp ns" data-fm="4"><text class="fr-lab" x="24" y="378">M5 全模型</text><line class="fr-ci" x1="488.1" y1="374" x2="676.1" y2="374"/><line class="fr-cap" x1="488.1" y1="370" x2="488.1" y2="378"/><line class="fr-cap" x1="676.1" y1="370" x2="676.1" y2="378"/><circle class="fr-dot" cx="582.1" cy="374" r="4.2"/><text class="fr-val" x="1034" y="378" text-anchor="end">0.070<tspan class="fr-se" dx="6">(0.370)</tspan></text></g></svg>
+<div class="ctl-bar" style="margin:12px 0 0"><span class="ctl-lab">標示模型</span>
+<div class="seg seg-sm" role="group" aria-label="模型"><button data-fm="0" aria-pressed="false">M1 政黨因素</button><button data-fm="1" aria-pressed="false">M2 預算衝突</button><button data-fm="2" aria-pressed="false">M3 中國因素</button><button data-fm="3" aria-pressed="false">M4 美國因素</button><button data-fm="4" aria-pressed="false">M5 全模型</button></div></div>
+<p class="note">信賴區間由原文表 4 報告的係數與標準誤計算（β ± 1.96×SE），原文未直接報告區間。空心點為未達 p&lt;0.1 的估計。插補品質：M2 至 M5 的 RVI 介於 0.023 至 0.065、FMI 介於 0.116 至 0.224。</p>
+</div></div><p class="cite">原文第 28、29、30、31 頁</p></div></section><section class="page s4" data-page="8" aria-label="資料分析 ②　政黨認同如何經由政策態度影響罷免偏好"><div class="page-inner"><div class="page-head"><span class="page-dot" aria-hidden="true"></span><h2 class="page-title">資料分析 ②　政黨認同如何經由政策態度影響罷免偏好</h2><span class="page-num">08 / 12</span></div><div class="fig fig-pd">
+<div class="ctl-bar">
+  <span class="ctl-lab">陣營</span>
+  <div class="seg" role="tablist" aria-label="政黨陣營"><button role="tab" data-pdcamp="泛綠" aria-selected="false">泛綠</button><button role="tab" data-pdcamp="泛藍" aria-selected="false">泛藍</button><button role="tab" data-pdcamp="民眾黨" aria-selected="false">民眾黨</button></div>
+  <span class="ctl-lab">路徑</span>
+  <div class="seg seg-sm" role="group" aria-label="路徑選擇">
+    <button data-pdpath="all" aria-pressed="false">全部</button>
+    <button data-pdpath="0" aria-pressed="false">立院刪凍預算</button><button data-pdpath="1" aria-pressed="false">境外敵對勢力</button><button data-pdpath="2" aria-pressed="false">中配六改四</button><button data-pdpath="3" aria-pressed="false">對美關稅表現</button><button data-pdpath="4" aria-pressed="false">美國出兵協防</button>
+  </div>
+</div>
+<div class="pd-wrap">
+<svg class="pd" viewBox="0 0 1100 586" role="img" aria-labelledby="pd-desc">
+<desc id="pd-desc">政黨認同經由五項政策態度影響大罷免偏好的路徑圖。線寬與係數絕對值成比例，實線為達顯著水準，虛線為未達 p&lt;0.05。</desc>
+<text class="pd-col2" x="110.0" y="26" text-anchor="middle"><tspan class="pd-colk">X</tspan><tspan class="pd-coln" dx="9">解釋變項</tspan></text><line class="pd-bandline" x1="242.0" y1="22" x2="261.0" y2="22"/><line class="pd-bandline" x1="283.0" y1="22" x2="298.0" y2="22"/><path class="pd-bandarrow" d="M298.0,18 L305.0,22 L298.0,26 Z"/><text class="pd-bandlab" x="272.0" y="26" text-anchor="middle">a</text><text class="pd-col2" x="524.0" y="26" text-anchor="middle"><tspan class="pd-colk">M</tspan><tspan class="pd-coln" dx="9">中介變項</tspan></text><line class="pd-bandline" x1="770.0" y1="22" x2="789.0" y2="22"/><line class="pd-bandline" x1="811.0" y1="22" x2="826.0" y2="22"/><path class="pd-bandarrow" d="M826.0,18 L833.0,22 L826.0,26 Z"/><text class="pd-bandlab" x="800.0" y="26" text-anchor="middle">b</text><text class="pd-col2" x="988.0" y="26" text-anchor="middle"><tspan class="pd-colk">Y</tspan><tspan class="pd-coln" dx="9">結果變項</tspan></text><line class="pd-rule" x1="20" y1="42" x2="1080" y2="42"/><rect class="pd-gbar g-budget" x="331" y="76.0" width="3" height="80.0"/><text class="pd-grp" x="344" y="76">預算衝突</text><rect class="pd-gbar g-cn" x="331" y="186.0" width="3" height="160.0"/><text class="pd-grp" x="344" y="186">中國因素</text><rect class="pd-gbar g-us" x="331" y="376.0" width="3" height="160.0"/><text class="pd-grp" x="344" y="376">美國因素</text><g class="pd-a" data-ai="0"><path class="pd-edge" d="M200,306 C304,306 240,116 344,116"/><path class="pd-arrow" transform="translate(344,116)" d="M-7,-4.2 L0,0 L-7,4.2 Z"/></g><g class="pd-b" data-bi="0"><path class="pd-edge" d="M704,116 C808,116 792,306 896,306"/><path class="pd-arrow" transform="translate(896,306)" d="M-7,-4.2 L0,0 L-7,4.2 Z"/></g><g class="pd-a" data-ai="1"><path class="pd-edge" d="M200,306 C304,306 240,226 344,226"/><path class="pd-arrow" transform="translate(344,226)" d="M-7,-4.2 L0,0 L-7,4.2 Z"/></g><g class="pd-b" data-bi="1"><path class="pd-edge" d="M704,226 C808,226 792,306 896,306"/><path class="pd-arrow" transform="translate(896,306)" d="M-7,-4.2 L0,0 L-7,4.2 Z"/></g><g class="pd-a" data-ai="2"><path class="pd-edge" d="M200,306 C304,306 240,306 344,306"/><path class="pd-arrow" transform="translate(344,306)" d="M-7,-4.2 L0,0 L-7,4.2 Z"/></g><g class="pd-b" data-bi="2"><path class="pd-edge" d="M704,306 C808,306 792,306 896,306"/><path class="pd-arrow" transform="translate(896,306)" d="M-7,-4.2 L0,0 L-7,4.2 Z"/></g><g class="pd-a" data-ai="3"><path class="pd-edge" d="M200,306 C304,306 240,416 344,416"/><path class="pd-arrow" transform="translate(344,416)" d="M-7,-4.2 L0,0 L-7,4.2 Z"/></g><g class="pd-b" data-bi="3"><path class="pd-edge" d="M704,416 C808,416 792,306 896,306"/><path class="pd-arrow" transform="translate(896,306)" d="M-7,-4.2 L0,0 L-7,4.2 Z"/></g><g class="pd-a" data-ai="4"><path class="pd-edge" d="M200,306 C304,306 240,496 344,496"/><path class="pd-arrow" transform="translate(344,496)" d="M-7,-4.2 L0,0 L-7,4.2 Z"/></g><g class="pd-b" data-bi="4"><path class="pd-edge" d="M704,496 C808,496 792,306 896,306"/><path class="pd-arrow" transform="translate(896,306)" d="M-7,-4.2 L0,0 L-7,4.2 Z"/></g><g class="pd-c"><path class="pd-edge nsig" d="M110.0,343.0 L110.0,554.0 Q110.0,568.0 124.0,568.0 L974.0,568.0 Q988.0,568.0 988.0,554.0 L988.0,343.0"/><path class="pd-arrow" transform="translate(988.0,343.0) rotate(-90)" d="M-7,-4.2 L0,0 L-7,4.2 Z"/><text class="pd-clab" x="549.0" y="557.0" text-anchor="middle"><tspan class="pd-ck">直接效果 c′</tspan><tspan class="pd-vc" dx="7"></tspan></text></g><g class="pd-n pd-x" data-node="x"><rect class="pd-node" x="20" y="269.0" width="180" height="74" rx="2"/><text class="pd-nlab" x="110.0" y="304" text-anchor="middle">政黨認同</text><text class="pd-nsub" x="110.0" y="326" text-anchor="middle">泛綠</text><rect class="pd-hit" x="20" y="269.0" width="180" height="74" rx="2"/></g><g class="pd-n pd-m" data-node="m0"><rect class="pd-node" x="344" y="80.0" width="360" height="72" rx="2"/><text class="pd-nlab" x="524.0" y="100" text-anchor="middle">立院刪凍預算</text><text class="pd-ncoef" x="524.0" y="124" text-anchor="middle" data-coef="0"><tspan class="pd-ck">a</tspan><tspan class="pd-va" dx="4"></tspan><tspan class="pd-ck" dx="14">b</tspan><tspan class="pd-vb" dx="4"></tspan></text><text class="pd-nte" x="524.0" y="146" text-anchor="middle" data-te="0"><tspan class="pd-ck">占總效應</tspan><tspan class="pd-vte" dx="5"></tspan></text><rect class="pd-hit" x="344" y="80.0" width="360" height="72" rx="2"/></g><g class="pd-n pd-m" data-node="m1"><rect class="pd-node" x="344" y="190.0" width="360" height="72" rx="2"/><text class="pd-nlab" x="524.0" y="210" text-anchor="middle">境外敵對勢力</text><text class="pd-ncoef" x="524.0" y="234" text-anchor="middle" data-coef="1"><tspan class="pd-ck">a</tspan><tspan class="pd-va" dx="4"></tspan><tspan class="pd-ck" dx="14">b</tspan><tspan class="pd-vb" dx="4"></tspan></text><text class="pd-nte" x="524.0" y="256" text-anchor="middle" data-te="1"><tspan class="pd-ck">占總效應</tspan><tspan class="pd-vte" dx="5"></tspan></text><rect class="pd-hit" x="344" y="190.0" width="360" height="72" rx="2"/></g><g class="pd-n pd-m" data-node="m2"><rect class="pd-node" x="344" y="270.0" width="360" height="72" rx="2"/><text class="pd-nlab" x="524.0" y="290" text-anchor="middle">中配六改四</text><text class="pd-ncoef" x="524.0" y="314" text-anchor="middle" data-coef="2"><tspan class="pd-ck">a</tspan><tspan class="pd-va" dx="4"></tspan><tspan class="pd-ck" dx="14">b</tspan><tspan class="pd-vb" dx="4"></tspan></text><text class="pd-nte" x="524.0" y="336" text-anchor="middle" data-te="2"><tspan class="pd-ck">占總效應</tspan><tspan class="pd-vte" dx="5"></tspan></text><rect class="pd-hit" x="344" y="270.0" width="360" height="72" rx="2"/></g><g class="pd-n pd-m" data-node="m3"><rect class="pd-node" x="344" y="380.0" width="360" height="72" rx="2"/><text class="pd-nlab" x="524.0" y="400" text-anchor="middle">對美關稅表現</text><text class="pd-ncoef" x="524.0" y="424" text-anchor="middle" data-coef="3"><tspan class="pd-ck">a</tspan><tspan class="pd-va" dx="4"></tspan><tspan class="pd-ck" dx="14">b</tspan><tspan class="pd-vb" dx="4"></tspan></text><text class="pd-nte" x="524.0" y="446" text-anchor="middle" data-te="3"><tspan class="pd-ck">占總效應</tspan><tspan class="pd-vte" dx="5"></tspan></text><rect class="pd-hit" x="344" y="380.0" width="360" height="72" rx="2"/></g><g class="pd-n pd-m" data-node="m4"><rect class="pd-node" x="344" y="460.0" width="360" height="72" rx="2"/><text class="pd-nlab" x="524.0" y="480" text-anchor="middle">美國出兵協防</text><text class="pd-ncoef" x="524.0" y="504" text-anchor="middle" data-coef="4"><tspan class="pd-ck">a</tspan><tspan class="pd-va" dx="4"></tspan><tspan class="pd-ck" dx="14">b</tspan><tspan class="pd-vb" dx="4"></tspan></text><text class="pd-nte" x="524.0" y="526" text-anchor="middle" data-te="4"><tspan class="pd-ck">占總效應</tspan><tspan class="pd-vte" dx="5"></tspan></text><rect class="pd-hit" x="344" y="460.0" width="360" height="72" rx="2"/></g><g class="pd-n pd-y" data-node="y"><rect class="pd-node" x="896" y="269.0" width="184" height="74" rx="2"/><text class="pd-nlab" x="988.0" y="304" text-anchor="middle">大罷免偏好</text><text class="pd-nsub" x="988.0" y="326" text-anchor="middle">贊成罷免活動</text><rect class="pd-hit" x="896" y="269.0" width="184" height="74" rx="2"/></g></svg>
+<div class="pd-legend">
+  <span><i class="pos"></i>正向</span><span><i class="neg"></i>負向</span>
+  <span><i class="nsig"></i>未達 p&lt;0.05</span><span>線寬 ∝ |係數|</span>
+  <span><i class="top"></i>該陣營占總效應最高的路徑</span><span class="pd-hint">a 取自原文附表 4（第 43 頁）；b 與 c′ 取自表 4 全模型 M5；占總效應取自表 5</span>
+</div>
+</div>
+<div class="pd-read" id="pd-read" aria-live="polite"></div>
+
+<script type="application/json" id="pd-data">{"a": {"泛綠": [{"b": "2.235***", "se": "0.341"}, {"b": "0.924***", "se": "0.210"}, {"b": "1.755***", "se": "0.250"}, {"b": "1.975***", "se": "0.250"}, {"b": "1.355***", "se": "0.226"}], "泛藍": [{"b": "-1.113***", "se": "0.245"}, {"b": "-1.093***", "se": "0.236"}, {"b": "-1.019***", "se": "0.243"}, {"b": "-1.359***", "se": "0.317"}, {"b": "-0.671**", "se": "0.240"}], "民眾黨": [{"b": "-1.585***", "se": "0.314"}, {"b": "-0.716**", "se": "0.261"}, {"b": "-0.708*", "se": "0.289"}, {"b": "-1.010**", "se": "0.356"}, {"b": "-0.565*", "se": "0.277"}]}, "b": [{"b": "0.535", "se": "0.325"}, {"b": "1.280***", "se": "0.299"}, {"b": "0.413+", "se": "0.235"}, {"b": "1.362***", "se": "0.278"}, {"b": "0.848***", "se": "0.250"}], "c": {"泛綠": {"b": "1.235***", "se": "0.301"}, "泛藍": {"b": "-0.806*", "se": "0.362"}, "民眾黨": {"b": "0.070", "se": "0.370"}}, "ind": {"泛綠": [{"b": "0.148", "se": "0.094", "ie": 9.97, "te": 5.44}, {"b": "0.395***", "se": "0.106", "ie": 26.6, "te": 14.52}, {"b": "0.096", "se": "0.059", "ie": 6.46, "te": 3.53}, {"b": "0.599***", "se": "0.133", "ie": 40.34, "te": 22.01}, {"b": "0.248**", "se": "0.082", "ie": 16.7, "te": 9.11}], "泛藍": [{"b": "-0.130", "se": "0.083", "ie": 15.68, "te": 7.95}, {"b": "-0.255**", "se": "0.081", "ie": 30.76, "te": 15.6}, {"b": "-0.110", "se": "0.067", "ie": 13.27, "te": 6.73}, {"b": "-0.225***", "se": "0.068", "ie": 27.14, "te": 13.76}, {"b": "-0.109*", "se": "0.048", "ie": 13.15, "te": 6.67}], "民眾黨": [{"b": "-0.181", "se": "0.113", "ie": 24.93, "te": 27.59}, {"b": "-0.177*", "se": "0.083", "ie": 24.38, "te": 26.98}, {"b": "-0.072", "se": "0.049", "ie": 9.92, "te": 10.98}, {"b": "-0.200**", "se": "0.073", "ie": 27.55, "te": 30.49}, {"b": "-0.096+", "se": "0.052", "ie": 13.22, "te": 14.63}]}, "tot": {"泛綠": {"b": "1.485***", "se": "0.268", "te": 54.61}, "泛藍": {"b": "-0.829***", "se": "0.242", "te": 50.07}, "民眾黨": {"b": "-0.726**", "se": "0.247", "te": 110.67}}, "paths": ["立院刪凍預算", "境外敵對勢力", "中配六改四", "對美關稅表現", "美國出兵協防"]}</script>
+</div><p class="cite">原文第 31、32、33、43 頁</p></div></section><section class="page s4" data-page="9" aria-label="資料分析 ③　中介路徑分解"><div class="page-inner"><div class="page-head"><span class="page-dot" aria-hidden="true"></span><h2 class="page-title">資料分析 ③　中介路徑分解</h2><span class="page-num">09 / 12</span></div><div class="fig fig-khb">
+<div class="ctl-bar">
+  <span class="ctl-lab">陣營</span><div class="seg" role="tablist" aria-label="政黨陣營"><button role="tab" data-kcamp="泛綠" aria-selected="false">泛綠</button><button role="tab" data-kcamp="泛藍" aria-selected="false">泛藍</button><button role="tab" data-kcamp="民眾黨" aria-selected="false">民眾黨</button></div>
+  <span class="ctl-lab">指標</span><div class="seg seg-sm" role="group" aria-label="指標">
+    <button data-kmetric="ie" aria-pressed="false">%IE</button><button data-kmetric="te" aria-pressed="false">%TE</button></div>
+  <span class="ctl-lab">估計</span><div class="seg seg-sm" role="group" aria-label="估計策略">
+    <button data-kest="mi" aria-pressed="false">多重插補 30 組</button><button data-kest="lw" aria-pressed="false">完全排除</button></div>
+</div>
+<div class="panel"><div id="khb-body" aria-live="polite"></div>
+<p class="note" id="khb-meta"></p>
+<p class="cite">中介路徑分解採用 KHB 估計；%IE=中介路徑占總中介效果（total indirect effect）的比例；%TE=中介路徑占總效應（total effect）的比例。括弧內為標準誤，+p&lt;0.1 *p&lt;.05 **p&lt;.01 ***p&lt;.001</p></div>
+<script type="application/json" id="khb-data">{"泛綠": {"lw": {"rows": [{"name": "立院刪凍預算", "beta": "0.107", "se": "0.111", "ie": 6.23, "te": 3.74}, {"name": "境外敵對勢力", "beta": "0.556***", "se": "0.148", "ie": 32.36, "te": 19.45}, {"name": "中配六改四", "beta": "0.065", "se": "0.083", "ie": 3.78, "te": 2.27}, {"name": "對美關稅表現", "beta": "0.666***", "se": "0.163", "ie": 38.77, "te": 23.29}, {"name": "美國出兵協防", "beta": "0.324**", "se": "0.113", "ie": 18.86, "te": 11.33}], "total": {"beta": "1.718***", "se": "0.397", "te": 60.09}, "n": "655"}, "mi": {"rows": [{"name": "立院刪凍預算", "beta": "0.148", "se": "0.094", "ie": 9.97, "te": 5.44}, {"name": "境外敵對勢力", "beta": "0.395***", "se": "0.106", "ie": 26.6, "te": 14.52}, {"name": "中配六改四", "beta": "0.096", "se": "0.059", "ie": 6.46, "te": 3.53}, {"name": "對美關稅表現", "beta": "0.599***", "se": "0.133", "ie": 40.34, "te": 22.01}, {"name": "美國出兵協防", "beta": "0.248**", "se": "0.082", "ie": 16.7, "te": 9.11}], "total": {"beta": "1.485***", "se": "0.268", "te": 54.61}, "n": "981"}}, "泛藍": {"lw": {"rows": [{"name": "立院刪凍預算", "beta": "-0.097", "se": "0.101", "ie": 10.01, "te": 4.2}, {"name": "境外敵對勢力", "beta": "-0.311**", "se": "0.116", "ie": 32.09, "te": 13.48}, {"name": "中配六改四", "beta": "-0.072", "se": "0.091", "ie": 7.43, "te": 3.12}, {"name": "對美關稅表現", "beta": "-0.362***", "se": "0.109", "ie": 37.36, "te": 15.69}, {"name": "美國出兵協防", "beta": "-0.127+", "se": "0.071", "ie": 13.11, "te": 5.5}], "total": {"beta": "-0.969**", "se": "0.366", "te": 42.0}, "n": "655"}, "mi": {"rows": [{"name": "立院刪凍預算", "beta": "-0.130", "se": "0.083", "ie": 15.68, "te": 7.95}, {"name": "境外敵對勢力", "beta": "-0.255**", "se": "0.081", "ie": 30.76, "te": 15.6}, {"name": "中配六改四", "beta": "-0.110", "se": "0.067", "ie": 13.27, "te": 6.73}, {"name": "對美關稅表現", "beta": "-0.225***", "se": "0.068", "ie": 27.14, "te": 13.76}, {"name": "美國出兵協防", "beta": "-0.109*", "se": "0.048", "ie": 13.15, "te": 6.67}], "total": {"beta": "-0.829***", "se": "0.242", "te": 50.07}, "n": "981"}}, "民眾黨": {"lw": {"rows": [{"name": "立院刪凍預算", "beta": "-0.129", "se": "0.135", "ie": 13.64, "te": 10.64}, {"name": "境外敵對勢力", "beta": "-0.258*", "se": "0.124", "ie": 27.27, "te": 21.29}, {"name": "中配六改四", "beta": "-0.046", "se": "0.060", "ie": 4.86, "te": 3.8}, {"name": "對美關稅表現", "beta": "-0.345**", "se": "0.116", "ie": 36.47, "te": 28.47}, {"name": "美國出兵協防", "beta": "-0.169*", "se": "0.084", "ie": 17.86, "te": 13.94}], "total": {"beta": "-0.946*", "se": "0.371", "te": 78.14}, "n": "655"}, "mi": {"rows": [{"name": "立院刪凍預算", "beta": "-0.181", "se": "0.113", "ie": 24.93, "te": 27.59}, {"name": "境外敵對勢力", "beta": "-0.177*", "se": "0.083", "ie": 24.38, "te": 26.98}, {"name": "中配六改四", "beta": "-0.072", "se": "0.049", "ie": 9.92, "te": 10.98}, {"name": "對美關稅表現", "beta": "-0.200**", "se": "0.073", "ie": 27.55, "te": 30.49}, {"name": "美國出兵協防", "beta": "-0.096+", "se": "0.052", "ie": 13.22, "te": 14.63}], "total": {"beta": "-0.726**", "se": "0.247", "te": 110.67}, "n": "981"}}}</script>
+</div><p class="cite">原文第 32、33、34、35 頁</p></div></section><section class="page s5" data-page="10" aria-label="結論 ①　地緣政治的不對稱中介"><div class="page-inner"><div class="page-head"><span class="page-dot" aria-hidden="true"></span><h2 class="page-title">結論 ①　地緣政治的不對稱中介</h2><span class="page-num">10 / 12</span></div><div class="panel"><p class="lead">地緣政治議題對罷免動員的影響，不取決於議題本身的重要性，而取決於它與既有政黨光譜的緊密程度；連結愈深，中介效果反而愈弱。</p></div><div class="fig"><div class="panel">
+<p class="chart-title">總中介效果占總效應的比例（%TE）</p>
+<div class="db"><div class="db-row db-green"><span class="db-name">泛綠</span><span class="db-track"><i class="db-link" style="left:47.49%;width:4.77%"></i><i class="db-pt lw" style="left:52.25%"></i><i class="db-pt mi" style="left:47.49%"></i><i class="db-100" style="left:86.96%"></i></span><span class="db-val">54.61%</span></div><div class="db-row db-blue"><span class="db-name">泛藍</span><span class="db-track"><i class="db-link" style="left:36.52%;width:7.02%"></i><i class="db-pt lw" style="left:36.52%"></i><i class="db-pt mi" style="left:43.54%"></i><i class="db-100" style="left:86.96%"></i></span><span class="db-val">50.07%</span></div><div class="db-row db-tpp"><span class="db-name">民眾黨</span><span class="db-track"><i class="db-link" style="left:67.95%;width:28.29%"></i><i class="db-pt lw" style="left:67.95%"></i><i class="db-pt mi" style="left:96.23%"></i><i class="db-100" style="left:86.96%"></i></span><span class="db-val">110.67%</span></div></div>
+<div class="db-axis"><span>0%</span><span>50%</span><span>100%</span></div>
+<div class="db-legend">
+  <span><i class="lg-mi"></i>多重插補 30 組　N=981</span>
+  <span><i class="lg-lw"></i>完全排除法　N=655</span>
+  <span><i class="lg-100"></i>100%：中介效果等於總效應</span>
+</div>
+<p class="note">泛綠 54.61% 與泛藍 50.07% 皆呈現直接與間接效果並存的結構。民眾黨的 110.67% 顯示其政黨認同的直接效果已完全被議題中介取代，政策態度並非透過政黨認同進行情感性連結傳遞，而更多依附於對具體議題的工具性評價。</p>
+</div></div><div class="panel"><p class="note">中國因素長期內化於統獨競爭軸線，解釋力與政黨認同高度重疊：它在泛藍的 %IE 雖居首位（30.76%），卻僅占總效應的 15.60%，低於泛綠美國關稅路徑的 22.01%。美國關稅是 2025 年的新外生衝擊，尚未內化於既有政黨光譜，反而保留最強的中介解釋空間。民眾黨的總中介比例達 110.67%，其政黨認同的直接效果已被議題中介完全取代。</p></div><p class="cite">原文第 33、35、36 頁</p></div></section><section class="page s5" data-page="11" aria-label="結論 ②　三項潛在困境在發動階段即已浮現"><div class="page-inner"><div class="page-head"><span class="page-dot" aria-hidden="true"></span><h2 class="page-title">結論 ②　三項潛在困境在發動階段即已浮現</h2><span class="page-num">11 / 12</span></div><div class="panel"><div class="kv"><div><b>制度設計</b><p>以個別立委為單位逐一發動，缺乏類似日本「議會解散直接請求」的集體罷免設計。制度目標指向國會多數的重組時，個案式程序難以與其所欲達成的權力重組目標相匹配。</p></div><div><b>民意分布</b><p>即便在罷免選區樣本中，傾向不贊成者的比例亦高於贊成者。動員試圖擴及中間選民時，地緣政治議題的疊加反而使部分潛在支持者轉向觀望。</p></div><div><b>政黨對決的回歸效應</b><p>框架為「重組國會權力結構」就難免被視為政黨清算的工具，既為被罷免者提供動員反向支持的空間，也使罷免難以維持公民課責的中立性訴求。</p></div></div><p class="cite">Welp and Whitehead 2020。研究限制：問項廣度、非隨機遺漏、橫斷面資料無法處理反向因果。</p></div><p class="cite">原文第 37、38 頁</p></div></section><section class="page s5" data-page="12" aria-label="研究定位　對誰說話、補了什麼缺口"><div class="page-inner"><div class="page-head"><span class="page-dot" aria-hidden="true"></span><h2 class="page-title">研究定位　對誰說話、補了什麼缺口</h2><span class="page-num">12 / 12</span></div><div class="fig fig-pos">
+<div class="poss"><button class="pos-btn pos-c5" data-pos="0" aria-pressed="false"><span class="pos-name">比較罷免研究</span><span class="pos-ref">Serdült and Welp 2017；Welp and Whitehead 2020；Spivak 2020；Okamoto and Serdült 2020；Bowler 2004</span></button><button class="pos-btn pos-c2" data-pos="1" aria-pressed="false"><span class="pos-name">罷免與地緣政治</span><span class="pos-ref">Mișcoiu 2020（摩爾多瓦）；Welp and Whitehead 2020（委內瑞拉、玻利維亞）</span></button><button class="pos-btn pos-c4" data-pos="2" aria-pressed="false"><span class="pos-name">臺灣青鳥與大罷免研究</span><span class="pos-ref">何明修 2024；吳崑玉 2024；謝達文 2025；許伯崧 2025；倪世傑 2025；劉芷妤 2025；張峻豪等 2025</span></button><button class="pos-btn pos-c1" data-pos="3" aria-pressed="false"><span class="pos-name">方法</span><span class="pos-ref">Karlson et al. 2012；Kohler et al. 2011；van Buuren 2018；von Hippel 2007</span></button></div>
+<div class="detail detail-gap" id="pos-detail" aria-live="polite"></div>
+<script type="application/json" id="pos-data">[{"name": "比較罷免研究", "ref": "Serdült and Welp 2017；Welp and Whitehead 2020；Spivak 2020；Okamoto and Serdült 2020；Bowler 2004", "has": "既有研究把罷免的政治功能分成直接問責、間接問責、制度鬥爭與黨派競爭四類，並累積了德國、日本、秘魯、美國州層級的案例證據。", "gap": "本文主張那四類可由「制度目標」與「驅動邏輯」兩項相互獨立的維度系統性整合，得到四種理想型，並說明同一個案可隨政治環境在型之間位移。"}, {"name": "罷免與地緣政治", "ref": "Mișcoiu 2020（摩爾多瓦）；Welp and Whitehead 2020（委內瑞拉、玻利維亞）", "has": "已注意到罷免議題會被「再政治化」為對外路線之爭，但分析停在國內極化與政治對決工具的層次。", "gap": "既有研究並未考量國內罷免議題如何被嵌入國際關係結構。本文以臺灣作為地緣政治破碎帶的個案，檢驗境外勢力如何透過民眾的政策態度中介罷免偏好，並發現中國因素與美國因素的中介強度高度不對稱。"}, {"name": "臺灣青鳥與大罷免研究", "ref": "何明修 2024；吳崑玉 2024；謝達文 2025；許伯崧 2025；倪世傑 2025；劉芷妤 2025；張峻豪等 2025", "has": "已從社會運動的動員機制、公民社會的去中心化轉型、媒體論述的二極化與罷免制度設計等面向提供重要的經驗觀察。", "gap": "缺少系統性的實證檢驗：政黨認同是直接傳遞到罷免偏好，還是經由特定政策態度所中介，各陣營的中介結構是否相同。本文以投票前一個月的全國代表性調查補上這一塊。"}, {"name": "方法", "ref": "Karlson et al. 2012；Kohler et al. 2011；van Buuren 2018；von Hippel 2007", "has": "非線性機率模型的係數會隨納入變項改變尺度，直接比較會把尺度變化誤判為中介效果；政治態度題組的遺漏又常被當成隨機處理。", "gap": "本文先證明遺漏結構嵌入各陣營的動員框架（Pseudo R² 0.138–0.216），再以 MICE 製作 30 組插補資料集，用 KHB 分解並以完全排除法交叉驗證，使無黨派游離選民不被完全排除法刪掉而高估效果。"}]</script>
+</div><p class="cite">原文第 21、22、31、37 頁</p></div></section></div></div>
+<nav class="kiosk-nav" aria-label="導覽">
+  <button class="kiosk-btn" id="b-home">回到封面</button>
+  <button class="kiosk-btn" id="b-prev">上一頁</button>
+  <button class="kiosk-btn" id="b-next">下一頁</button>
+</nav>
+<div class="kiosk-rail" id="rail"></div>
+<dialog id="tbl-dlg" class="tbl-dlg" aria-labelledby="tbl-t"><div class="dlg-top"><h2 id="tbl-t">完整表格</h2><button class="dlg-btn" id="tbl-close">關閉</button><div class="tbl-tabs" role="tablist" aria-label="表格"><button data-tbl="0" aria-selected="false">問卷題目</button><button data-tbl="1" aria-selected="false">表 3　罷免議題次數分配</button><button data-tbl="2" aria-selected="false">表 4　影響罷免傾向的逐步檢驗</button><button data-tbl="3" aria-selected="false">表 5　中介路徑分解（KHB）</button></div></div><div class="dlg-body"><div class="tbl-pane" data-pane="0"><div class="qlist"><div class="qrow q-dv"><div class="qhead"><span class="qdim">依變項</span><span class="qname">贊成罷免</span></div><q>現在有很多團體發起要罷免國民黨或民進黨的立委，請問您對全台各地的立委罷免活動贊不贊成？</q><div class="qopts"><span class="qo">非常贊成</span><span class="qo">贊成</span><span class="qo">不太贊成</span><span class="qo">非常不贊成</span><span class="qo">無意見</span></div></div><div class="qrow q-budget"><div class="qhead"><span class="qdim">預算衝突</span><span class="qname">立院刪凍預算</span></div><q>在立法院，國民黨和民眾黨針對今年度中央政府總預算提出的刪減和凍結案，請問您贊不贊成？</q><div class="qopts"><span class="qo">非常贊成</span><span class="qo">贊成</span><span class="qo">不太贊成</span><span class="qo">非常不贊成</span><span class="qo">無反應／不知道</span></div></div><div class="qrow q-cn"><div class="qhead"><span class="qdim">中國因素</span><span class="qname">境外敵對勢力</span></div><q>今年三月賴清德總統召開國安高層會議，認定中國是反滲透法所定義的「境外敵對勢力」，請問您同不同意這個說法？</q><div class="qopts"><span class="qo">非常同意</span><span class="qo">同意</span><span class="qo">不太同意</span><span class="qo">非常不同意</span><span class="qo">無反應／不知道</span></div></div><div class="qrow q-cn"><div class="qhead"><span class="qdim">中國因素</span><span class="qname">中配六改四</span></div><q>根據台灣現在的法規，中國大陸籍配偶要取得中華民國身分證需要六年的時間，有立委提案要縮短為四年，有人則說要延長為八年，請問你認為應該要縮短、延長還是維持不變？</q><div class="qopts"><span class="qo">縮短</span><span class="qo">維持不變</span><span class="qo">延長</span><span class="qo">無反應／不知道</span></div></div><div class="qrow q-us"><div class="qhead"><span class="qdim">美國因素</span><span class="qname">對美關稅表現</span></div><q>請問您對賴清德政府在應對美國川普政府關稅問題上的表現滿不滿意？</q><div class="qopts"><span class="qo">非常滿意</span><span class="qo">滿意</span><span class="qo">不太滿意</span><span class="qo">非常不滿意</span><span class="qo">無反應／不知道</span></div></div><div class="qrow q-us"><div class="qhead"><span class="qdim">美國因素</span><span class="qname">美國出兵協防</span></div><q>大家都希望兩岸能維持和平。萬一中國大陸以武力攻打台灣，請問您認為美國會不會出兵協助台灣？</q><div class="qopts"><span class="qo">會</span><span class="qo">不會</span><span class="qo">無反應／不知道</span></div></div></div><p class="tbl-note">問項文字照 2025 年第一次社會意向調查問卷原文呈現；選項依原文表 3 與第 23 頁所列。模型估計時「立院刪凍預算」「境外敵對勢力」「對美關稅表現」三題因未通過平行迴歸假定，由四點量表合併為二分；「中配六改四」採有序邏輯迴歸。政黨認同的問法原文未列出，此處不臆測。</p></div><div class="tbl-pane" data-pane="1"><div class="tbl-wrap"><table class="tbl tbl-t3"><thead><tr><th scope="col">罷免議題</th><th scope="col" colspan="4">測量尺度</th><th scope="col">遺漏</th></tr></thead><tbody><tr><th scope="row">立院刪凍預算</th><td><span class="cell-lb">非常贊成</span><span class="cell-v">12.4%</span></td><td><span class="cell-lb">贊成</span><span class="cell-v">14.9%</span></td><td><span class="cell-lb">不太贊成</span><span class="cell-v">19.2%</span></td><td><span class="cell-lb">非常不贊成</span><span class="cell-v">27.9%</span></td><td class="miss"><span class="cell-lb">無反應／不知道</span><span class="cell-v">25.7%</span></td></tr><tr><th scope="row">境外敵對勢力</th><td><span class="cell-lb">非常同意</span><span class="cell-v">24.3%</span></td><td><span class="cell-lb">同意</span><span class="cell-v">23.5%</span></td><td><span class="cell-lb">不太同意</span><span class="cell-v">19.2%</span></td><td><span class="cell-lb">非常不同意</span><span class="cell-v">16.3%</span></td><td class="miss"><span class="cell-lb">無反應／不知道</span><span class="cell-v">16.7%</span></td></tr><tr><th scope="row">中配六改四</th><td><span class="cell-lb">縮短</span><span class="cell-v">13.5%</span></td><td><span class="cell-lb">維持不變</span><span class="cell-v">23.7%</span></td><td><span class="cell-lb">延長</span><span class="cell-v">51.9%</span></td><td></td><td class="miss"><span class="cell-lb">無反應／不知道</span><span class="cell-v">10.9%</span></td></tr><tr><th scope="row">對美關稅表現</th><td><span class="cell-lb">非常滿意</span><span class="cell-v">7.2%</span></td><td><span class="cell-lb">滿意</span><span class="cell-v">25.1%</span></td><td><span class="cell-lb">不太滿意</span><span class="cell-v">19.7%</span></td><td><span class="cell-lb">非常不滿意</span><span class="cell-v">25.5%</span></td><td class="miss"><span class="cell-lb">無反應／不知道</span><span class="cell-v">22.5%</span></td></tr><tr><th scope="row">美國出兵協防</th><td><span class="cell-lb">會</span><span class="cell-v">43.9%</span></td><td><span class="cell-lb">不會</span><span class="cell-v">43.9%</span></td><td></td><td></td><td class="miss"><span class="cell-lb">無反應／不知道</span><span class="cell-v">12.2%</span></td></tr></tbody></table></div><p class="cite">資料來源：2025 社會變遷調查第一波。</p></div><div class="tbl-pane" data-pane="2"><div class="tbl-wrap"><table class="tbl tbl-coef"><thead><tr><td></td><th scope="col">M1 政黨因素</th><th scope="col">M2 預算衝突</th><th scope="col">M3 中國因素</th><th scope="col">M4 美國因素</th><th scope="col">M5 全模型</th></tr></thead><tbody><tr class="cf"><th scope="row">立院刪凍預算</th><td class="na">—</td><td class="b">1.211***</td><td class="na">—</td><td class="na">—</td><td class="b">0.535</td></tr><tr class="sr"><td></td><td class="na"></td><td class="se">(0.279)</td><td class="na"></td><td class="na"></td><td class="se">(0.325)</td></tr><tr class="cf"><th scope="row">境外敵對勢力</th><td class="na">—</td><td class="na">—</td><td class="b">1.887***</td><td class="na">—</td><td class="b">1.280***</td></tr><tr class="sr"><td></td><td class="na"></td><td class="na"></td><td class="se">(0.269)</td><td class="na"></td><td class="se">(0.299)</td></tr><tr class="cf"><th scope="row">中配六改四</th><td class="na">—</td><td class="na">—</td><td class="b">0.501*</td><td class="na">—</td><td class="b">0.413+</td></tr><tr class="sr"><td></td><td class="na"></td><td class="na"></td><td class="se">(0.212)</td><td class="na"></td><td class="se">(0.235)</td></tr><tr class="cf"><th scope="row">對美關稅表現</th><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="b">1.761***</td><td class="b">1.362***</td></tr><tr class="sr"><td></td><td class="na"></td><td class="na"></td><td class="na"></td><td class="se">(0.257)</td><td class="se">(0.278)</td></tr><tr class="cf"><th scope="row">美國出兵協防</th><td class="na">—</td><td class="na">—</td><td class="na">—</td><td class="b">1.061***</td><td class="b">0.848***</td></tr><tr class="sr"><td></td><td class="na"></td><td class="na"></td><td class="na"></td><td class="se">(0.241)</td><td class="se">(0.250)</td></tr><tr class="sub"><th scope="row" colspan="6">政黨認同（參考組：其他）</th></tr><tr class="cf"><th scope="row" class="ind">泛綠</th><td class="b">2.168***</td><td class="b">1.911***</td><td class="b">1.782***</td><td class="b">1.484***</td><td class="b">1.235***</td></tr><tr class="sr"><td></td><td class="se">(0.236)</td><td class="se">(0.246)</td><td class="se">(0.258)</td><td class="se">(0.278)</td><td class="se">(0.301)</td></tr><tr class="cf"><th scope="row" class="ind">泛藍</th><td class="b">-1.547***</td><td class="b">-1.304***</td><td class="b">-1.130***</td><td class="b">-1.151**</td><td class="b">-0.806*</td></tr><tr class="sr"><td></td><td class="se">(0.328)</td><td class="se">(0.330)</td><td class="se">(0.342)</td><td class="se">(0.357)</td><td class="se">(0.362)</td></tr><tr class="cf"><th scope="row" class="ind">民眾黨</th><td class="b">-0.578+</td><td class="b">-0.136</td><td class="b">-0.305</td><td class="b">-0.170</td><td class="b">0.070</td></tr><tr class="sr"><td></td><td class="se">(0.317)</td><td class="se">(0.333)</td><td class="se">(0.349)</td><td class="se">(0.358)</td><td class="se">(0.370)</td></tr><tr class="cf"><th scope="row">女性</th><td class="b">-0.162</td><td class="b">-0.236</td><td class="b">-0.078</td><td class="b">-0.351</td><td class="b">-0.296</td></tr><tr class="sr"><td></td><td class="se">(0.191)</td><td class="se">(0.197)</td><td class="se">(0.206)</td><td class="se">(0.216)</td><td class="se">(0.226)</td></tr><tr class="cf"><th scope="row">年齡</th><td class="b">-0.000</td><td class="b">0.000</td><td class="b">0.001</td><td class="b">-0.001</td><td class="b">-0.001</td></tr><tr class="sr"><td></td><td class="se">(0.008)</td><td class="se">(0.008)</td><td class="se">(0.008)</td><td class="se">(0.008)</td><td class="se">(0.009)</td></tr><tr class="cf"><th scope="row">教育程度</th><td class="b">0.095</td><td class="b">0.118</td><td class="b">0.068</td><td class="b">0.140+</td><td class="b">0.117</td></tr><tr class="sr"><td></td><td class="se">(0.076)</td><td class="se">(0.080)</td><td class="se">(0.081)</td><td class="se">(0.080)</td><td class="se">(0.087)</td></tr><tr class="sub"><th scope="row" colspan="6">族群（參考組：閩南人）</th></tr><tr class="cf"><th scope="row" class="ind">客家人</th><td class="b">-0.392</td><td class="b">-0.468</td><td class="b">-0.282</td><td class="b">-0.182</td><td class="b">-0.156</td></tr><tr class="sr"><td></td><td class="se">(0.352)</td><td class="se">(0.353)</td><td class="se">(0.357)</td><td class="se">(0.396)</td><td class="se">(0.413)</td></tr><tr class="cf"><th scope="row" class="ind">外省人</th><td class="b">-0.214</td><td class="b">-0.140</td><td class="b">-0.120</td><td class="b">-0.028</td><td class="b">0.065</td></tr><tr class="sr"><td></td><td class="se">(0.313)</td><td class="se">(0.310)</td><td class="se">(0.354)</td><td class="se">(0.372)</td><td class="se">(0.410)</td></tr><tr class="cf"><th scope="row" class="ind">原住民族與其他</th><td class="b">0.459</td><td class="b">0.530</td><td class="b">0.176</td><td class="b">0.448</td><td class="b">0.230</td></tr><tr class="sr"><td></td><td class="se">(0.560)</td><td class="se">(0.654)</td><td class="se">(0.543)</td><td class="se">(0.530)</td><td class="se">(0.539)</td></tr><tr class="cf"><th scope="row">有婚姻經驗</th><td class="b">-0.315</td><td class="b">-0.394+</td><td class="b">-0.530*</td><td class="b">-0.291</td><td class="b">-0.497*</td></tr><tr class="sr"><td></td><td class="se">(0.202)</td><td class="se">(0.205)</td><td class="se">(0.222)</td><td class="se">(0.227)</td><td class="se">(0.240)</td></tr><tr class="cf"><th scope="row">臺灣人認同</th><td class="b">1.354***</td><td class="b">1.120***</td><td class="b">0.673*</td><td class="b">0.734**</td><td class="b">0.297</td></tr><tr class="sr"><td></td><td class="se">(0.248)</td><td class="se">(0.259)</td><td class="se">(0.266)</td><td class="se">(0.268)</td><td class="se">(0.294)</td></tr><tr class="cf"><th scope="row">參加罷免連署</th><td class="b">2.312***</td><td class="b">2.224***</td><td class="b">2.315***</td><td class="b">2.082***</td><td class="b">2.069***</td></tr><tr class="sr"><td></td><td class="se">(0.393)</td><td class="se">(0.381)</td><td class="se">(0.374)</td><td class="se">(0.426)</td><td class="se">(0.395)</td></tr><tr class="cf"><th scope="row">居住在罷免縣市</th><td class="b">-0.204</td><td class="b">-0.237</td><td class="b">-0.255</td><td class="b">-0.146</td><td class="b">-0.203</td></tr><tr class="sr"><td></td><td class="se">(0.195)</td><td class="se">(0.199)</td><td class="se">(0.212)</td><td class="se">(0.219)</td><td class="se">(0.229)</td></tr><tr class="cf"><th scope="row">常數</th><td class="b">-1.996*</td><td class="b">-2.693**</td><td class="b">-3.094***</td><td class="b">-2.918***</td><td class="b">-3.747***</td></tr><tr class="sr"><td></td><td class="se">(0.799)</td><td class="se">(0.849)</td><td class="se">(0.853)</td><td class="se">(0.824)</td><td class="se">(0.872)</td></tr><tr class="fit"><th scope="row">F-test</th><td class="b">24.56***</td><td class="b">21.18***</td><td class="b">20.32***</td><td class="b">22.19***</td><td class="b">17.08***</td></tr><tr class="fit"><th scope="row">Average RVI</th><td class="b">0.000</td><td class="b">0.023</td><td class="b">0.028</td><td class="b">0.038</td><td class="b">0.065</td></tr><tr class="fit"><th scope="row">Max FMI</th><td class="b">0.000</td><td class="b">0.181</td><td class="b">0.118</td><td class="b">0.116</td><td class="b">0.224</td></tr></tbody></table></div><p class="cite">註：本模型採用多重插補估計（Multiple-imputation estimates）的二分勝算對數迴歸模型（Logistic regression）。總樣本數為 981，括弧內為標準誤，+&lt;.01 *p&lt;.05 **p&lt;.01 ***p&lt;.001</p></div><div class="tbl-pane" data-pane="3"><div class="tbl-wrap"><table class="tbl tbl-coef tbl-t5"><thead><tr><td></td><th colspan="4" class="grp">完全排除　N=655</th><th colspan="4" class="grp">多重插補　IM=30，N=981</th></tr><tr><td></td><th>β</th><th>SE</th><th>%IE</th><th>%TE</th><th>β</th><th>SE</th><th>%IE</th><th>%TE</th></tr></thead><tbody><tr class="sub"><th scope="row" colspan="9">泛綠</th></tr><tr><th scope="row" class="ind">立院刪凍預算</th><td class="b">0.107</td><td class="se">(0.111)</td><td class="pc">6.23</td><td class="pc">3.74</td><td class="b">0.148</td><td class="se">(0.094)</td><td class="pc">9.97</td><td class="pc">5.44</td></tr><tr><th scope="row" class="ind">境外敵對勢力</th><td class="b">0.556***</td><td class="se">(0.148)</td><td class="pc">32.36</td><td class="pc">19.45</td><td class="b">0.395***</td><td class="se">(0.106)</td><td class="pc">26.60</td><td class="pc">14.52</td></tr><tr><th scope="row" class="ind">中配六改四</th><td class="b">0.065</td><td class="se">(0.083)</td><td class="pc">3.78</td><td class="pc">2.27</td><td class="b">0.096</td><td class="se">(0.059)</td><td class="pc">6.46</td><td class="pc">3.53</td></tr><tr><th scope="row" class="ind">對美關稅表現</th><td class="b">0.666***</td><td class="se">(0.163)</td><td class="pc">38.77</td><td class="pc">23.29</td><td class="b">0.599***</td><td class="se">(0.133)</td><td class="pc">40.34</td><td class="pc">22.01</td></tr><tr><th scope="row" class="ind">美國出兵協防</th><td class="b">0.324**</td><td class="se">(0.113)</td><td class="pc">18.86</td><td class="pc">11.33</td><td class="b">0.248**</td><td class="se">(0.082)</td><td class="pc">16.70</td><td class="pc">9.11</td></tr><tr class="tot"><th scope="row">總中介效果</th><td class="b">1.718***</td><td class="se">(0.397)</td><td class="na"></td><td class="pc">60.09</td><td class="b">1.485***</td><td class="se">(0.268)</td><td class="na"></td><td class="pc">54.61</td></tr><tr class="sub"><th scope="row" colspan="9">泛藍</th></tr><tr><th scope="row" class="ind">立院刪凍預算</th><td class="b">-0.097</td><td class="se">(0.101)</td><td class="pc">10.01</td><td class="pc">4.20</td><td class="b">-0.130</td><td class="se">(0.083)</td><td class="pc">15.68</td><td class="pc">7.95</td></tr><tr><th scope="row" class="ind">境外敵對勢力</th><td class="b">-0.311**</td><td class="se">(0.116)</td><td class="pc">32.09</td><td class="pc">13.48</td><td class="b">-0.255**</td><td class="se">(0.081)</td><td class="pc">30.76</td><td class="pc">15.60</td></tr><tr><th scope="row" class="ind">中配六改四</th><td class="b">-0.072</td><td class="se">(0.091)</td><td class="pc">7.43</td><td class="pc">3.12</td><td class="b">-0.110</td><td class="se">(0.067)</td><td class="pc">13.27</td><td class="pc">6.73</td></tr><tr><th scope="row" class="ind">對美關稅表現</th><td class="b">-0.362***</td><td class="se">(0.109)</td><td class="pc">37.36</td><td class="pc">15.69</td><td class="b">-0.225***</td><td class="se">(0.068)</td><td class="pc">27.14</td><td class="pc">13.76</td></tr><tr><th scope="row" class="ind">美國出兵協防</th><td class="b">-0.127+</td><td class="se">(0.071)</td><td class="pc">13.11</td><td class="pc">5.50</td><td class="b">-0.109*</td><td class="se">(0.048)</td><td class="pc">13.15</td><td class="pc">6.67</td></tr><tr class="tot"><th scope="row">總中介效果</th><td class="b">-0.969**</td><td class="se">(0.366)</td><td class="na"></td><td class="pc">42.00</td><td class="b">-0.829***</td><td class="se">(0.242)</td><td class="na"></td><td class="pc">50.07</td></tr><tr class="sub"><th scope="row" colspan="9">民眾黨</th></tr><tr><th scope="row" class="ind">立院刪凍預算</th><td class="b">-0.129</td><td class="se">(0.135)</td><td class="pc">13.64</td><td class="pc">10.64</td><td class="b">-0.181</td><td class="se">(0.113)</td><td class="pc">24.93</td><td class="pc">27.59</td></tr><tr><th scope="row" class="ind">境外敵對勢力</th><td class="b">-0.258*</td><td class="se">(0.124)</td><td class="pc">27.27</td><td class="pc">21.29</td><td class="b">-0.177*</td><td class="se">(0.083)</td><td class="pc">24.38</td><td class="pc">26.98</td></tr><tr><th scope="row" class="ind">中配六改四</th><td class="b">-0.046</td><td class="se">(0.060)</td><td class="pc">4.86</td><td class="pc">3.80</td><td class="b">-0.072</td><td class="se">(0.049)</td><td class="pc">9.92</td><td class="pc">10.98</td></tr><tr><th scope="row" class="ind">對美關稅表現</th><td class="b">-0.345**</td><td class="se">(0.116)</td><td class="pc">36.47</td><td class="pc">28.47</td><td class="b">-0.200**</td><td class="se">(0.073)</td><td class="pc">27.55</td><td class="pc">30.49</td></tr><tr><th scope="row" class="ind">美國出兵協防</th><td class="b">-0.169*</td><td class="se">(0.084)</td><td class="pc">17.86</td><td class="pc">13.94</td><td class="b">-0.096+</td><td class="se">(0.052)</td><td class="pc">13.22</td><td class="pc">14.63</td></tr><tr class="tot"><th scope="row">總中介效果</th><td class="b">-0.946*</td><td class="se">(0.371)</td><td class="na"></td><td class="pc">78.14</td><td class="b">-0.726**</td><td class="se">(0.247)</td><td class="na"></td><td class="pc">110.67</td></tr><tr class="fit"><th scope="row">樣本數</th><td colspan="4" class="b">655</td><td colspan="4" class="b">981</td></tr><tr class="fit"><th scope="row">Multiple Imputation</th><td colspan="4" class="na"></td><td colspan="4" class="b">RVI=0.022　FMI=0.042</td></tr></tbody></table></div><p class="cite">註：中介路徑分解採用 KHB 估計；%IE=中介路徑占總中介效果（total indirect effect）的比例；%TE=中介路徑占總效應（total effect）的比例。括弧內為標準誤，+p&lt;0.1 *p&lt;.05 **p&lt;.01 ***p&lt;.001</p></div></div></dialog>
+<script>/* 日系 kiosk 互動層。離線，無外部依賴。 */
+(function () {
+  'use strict';
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  function dat(id) { var n = document.getElementById(id); return n ? JSON.parse(n.textContent) : null; }
+  function el(t, c, x) { var n = document.createElement(t); if (c) n.className = c; if (x != null) n.textContent = x; return n; }
+  var CK = { '泛綠': 'green', '泛藍': 'blue', '民眾黨': 'tpp' };
+  function f2(v) { return Number(v).toFixed(2); }
+  function sig(b) { var m = String(b).match(/[*+]+$/); return m ? m[0] : ''; }
+  function val(b) { return parseFloat(String(b).replace(/[*+]+$/, '')); }
+  function strong(b) { var s = sig(b); return s === '***' || s === '**' || s === '*'; }
+
+  /* ───── 關係圖 ───── */
+  function initPD() {
+    var d = dat('pd-data'), read = $('#pd-read');
+    if (!d || !read) return;
+    var st = { camp: '泛綠', sel: 'all' };
+    var cb = $$('[data-pdcamp]'), pb = $$('[data-pdpath]');
+    var aG = $$('.pd-a'), bG = $$('.pd-b'), cG = $('.pd-c');
+    var xSub = $('.pd-x .pd-nsub');
+
+    function paint() {
+      cb.forEach(function (b) { b.setAttribute('aria-selected', b.dataset.pdcamp === st.camp); });
+      pb.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.pdpath === String(st.sel)); });
+      if (xSub) xSub.textContent = st.camp;
+      $$('.pd-m').forEach(function (g, i) {
+        var on = st.sel !== 'all' && +st.sel === i;
+        g.querySelector('.pd-node').classList.toggle('on', on);
+      });
+
+      var A = d.a[st.camp], C = d.c[st.camp];
+      function style(g, o, dim) {
+        var v = val(o.b), ok = strong(o.b), cls = v >= 0 ? 'pos' : 'neg';
+        var path = g.querySelector('.pd-edge'), arr = g.querySelector('.pd-arrow');
+        path.setAttribute('class', 'pd-edge ' + cls + (ok ? '' : ' nsig') + (dim ? ' dim' : ''));
+        path.style.strokeWidth = (1.4 + Math.min(Math.abs(v), 2.3) / 2.3 * 4.6).toFixed(2);
+        arr.setAttribute('class', 'pd-arrow ' + cls + (dim ? ' dim' : ''));
+      }
+      aG.forEach(function (g, i) { style(g, A[i], st.sel !== 'all' && +st.sel !== i); });
+      bG.forEach(function (g, i) { style(g, d.b[i], st.sel !== 'all' && +st.sel !== i); });
+      var tes = d.ind[st.camp].map(function (o) { return o.te; });
+      var teMax = Math.max.apply(null, tes);
+      $$('.pd-ncoef').forEach(function (t) {
+        var i = +t.dataset.coef;
+        var va = t.querySelector('.pd-va'), vb = t.querySelector('.pd-vb');
+        va.textContent = A[i].b; vb.textContent = d.b[i].b;
+        va.setAttribute('class', 'pd-va ' + (val(A[i].b) >= 0 ? 'pos' : 'neg') + (strong(A[i].b) ? '' : ' weak'));
+        vb.setAttribute('class', 'pd-vb ' + (val(d.b[i].b) >= 0 ? 'pos' : 'neg') + (strong(d.b[i].b) ? '' : ' weak'));
+        t.classList.toggle('dim', st.sel !== 'all' && +st.sel !== i);
+      });
+      $$('.pd-nte').forEach(function (t) {
+        var i = +t.dataset.te, o = d.ind[st.camp][i], top = o.te === teMax;
+        t.querySelector('.pd-vte').textContent = f2(o.te) + '%';
+        t.classList.toggle('top', top);
+        t.classList.toggle('dim', st.sel !== 'all' && +st.sel !== i);
+        var g = $$('.pd-m')[i];
+        if (g) {
+          g.querySelector('.pd-node').classList.toggle('top', top);
+          g.classList.toggle('top', top);
+        }
+      });
+      if (cG) {
+        style(cG, C, st.sel !== 'all');
+        var vc = cG.querySelector('.pd-vc');
+        if (vc) {
+          vc.textContent = C.b;
+          vc.setAttribute('class', 'pd-vc ' + (val(C.b) >= 0 ? 'pos' : 'neg') + (strong(C.b) ? '' : ' weak'));
+        }
+        cG.querySelector('.pd-clab').classList.toggle('dim', st.sel !== 'all');
+      }
+      renderRead();
+    }
+
+    function eq(parts) {
+      var w = el('p', 'pd-eq');
+      parts.forEach(function (p, i) {
+        if (i) w.append(el('span', null, '・'));
+        w.append(el('span', null, p[0] + ' '), el('b', null, p[1]));
+      });
+      return w;
+    }
+    function renderRead() {
+      read.replaceChildren();
+      var tot = d.tot[st.camp], C = d.c[st.camp];
+      if (st.sel === 'all') {
+        read.append(el('h3', null, st.camp + '　整體分解'));
+        read.append(eq([['總中介效果 β', tot.b + ' (' + tot.se + ')'],
+                        ['%TE', f2(tot.te) + '%'],
+                        ["直接效果 c′", C.b + ' (' + C.se + ')']]));
+        read.append(el('p', null,
+          '線寬與係數絕對值成比例；粗框為該陣營占總效應最高的路徑。點選中介節點可單獨檢視一條路徑。'));
+      } else {
+        var i = +st.sel, A = d.a[st.camp][i], B = d.b[i], I = d.ind[st.camp][i];
+        read.append(el('h3', null, st.camp + '　→　' + d.paths[i] + '　→　贊成罷免'));
+        read.append(eq([['a', A.b + ' (' + A.se + ')'],
+                        ['b', B.b + ' (' + B.se + ')'],
+                        ['間接 β', I.b + ' (' + I.se + ')'],
+                        ['%IE', f2(I.ie) + '%'],
+                        ['%TE', f2(I.te) + '%']]));
+        var msg = strong(I.b)
+          ? '這條路徑的間接效果達統計顯著水準。'
+          : '這條路徑的間接效果未達 p<0.05，虛線表示該段係數未達顯著水準。';
+        read.append(el('p', null, msg + '　a 路徑取自原文附表 4，b 路徑取自表 4 全模型 M5，間接效果與占比取自表 5 多重插補估計。'));
+      }
+    }
+    cb.forEach(function (b) { b.addEventListener('click', function () { st.camp = b.dataset.pdcamp; paint(); }); });
+    pb.forEach(function (b) { b.addEventListener('click', function () { st.sel = b.dataset.pdpath; paint(); }); });
+    $$('.pd-m').forEach(function (g, i) {
+      g.querySelector('.pd-hit').addEventListener('click', function () {
+        st.sel = (String(st.sel) === String(i)) ? 'all' : i; paint();
+      });
+    });
+    var xh = $('.pd-x .pd-hit'), yh = $('.pd-y .pd-hit');
+    if (xh) xh.addEventListener('click', function () { st.sel = 'all'; paint(); });
+    if (yh) yh.addEventListener('click', function () { st.sel = 'all'; paint(); });
+    paint();
+  }
+
+  /* ───── 清單＋細節（時間軸、事件史） ───── */
+  function listFig(key) {
+    var d = dat(key + '-data'), box = $('#' + key + '-detail');
+    if (!d || !box) return;
+    var btns = $$('[data-' + key + ']');
+    function show(i) {
+      btns.forEach(function (b) { b.setAttribute('aria-pressed', +b.dataset[key] === i); });
+      var r = d[i];
+      box.replaceChildren();
+      box.append(el('h3', null, r.title), el('span', 'when', r.when + '　' + (r.tag || '')), el('p', null, r.body));
+    }
+    btns.forEach(function (b) { b.addEventListener('click', function () { show(+b.dataset[key]); }); });
+    show(0);
+  }
+
+  /* ───── 四種理想型（含比較案例） ───── */
+  function initIdeal() {
+    var d = dat('ideal-data'), box = $('#ideal-detail');
+    if (!d || !box) return;
+    var btns = $$('[data-ideal]');
+    function show(i) {
+      btns.forEach(function (b) { b.setAttribute('aria-pressed', +b.dataset.ideal === i); });
+      var r = d[i];
+      box.replaceChildren();
+      box.append(el('h3', null, r.name), el('span', 'when', r.target + '　×　' + r.logic));
+      box.append(el('p', 'gist', r.body));
+      var wrap = el('div', 'cases');
+      r.cases.forEach(function (c) {
+        var it = el('div', 'case');
+        it.append(el('b', null, c.t), el('p', null, c.b));
+        wrap.append(it);
+      });
+      box.append(wrap);
+    }
+    btns.forEach(function (b) { b.addEventListener('click', function () { show(+b.dataset.ideal); }); });
+    show(0);
+  }
+
+  /* ───── 制度史三個轉折 ───── */
+  function initEra() {
+    var d = dat('era-data'), box = $('#era-detail');
+    if (!d || !box) return;
+    var btns = $$('[data-era]');
+    function show(i) {
+      btns.forEach(function (b) { b.setAttribute('aria-pressed', +b.dataset.era === i); });
+      var r = d[i];
+      box.replaceChildren();
+      box.append(el('h3', null, r.when + '　' + r.name), el('span', 'when', r.rule));
+      box.append(el('p', 'gist', r.body));
+      var wrap = el('div', 'cases cases-tight');
+      r.cases.forEach(function (c) {
+        var it = el('div', 'case');
+        it.append(el('b', null, c.t), el('p', null, c.b));
+        wrap.append(it);
+      });
+      box.append(wrap);
+    }
+    btns.forEach(function (b) { b.addEventListener('click', function () { show(+b.dataset.era); }); });
+    show(0);
+  }
+
+  /* ───── 定位：既有文獻 vs 本文補的缺口 ───── */
+  function initPos() {
+    var d = dat('pos-data'), box = $('#pos-detail');
+    if (!d || !box) return;
+    var btns = $$('[data-pos]');
+    function show(i) {
+      btns.forEach(function (b) { b.setAttribute('aria-pressed', +b.dataset.pos === i); });
+      var r = d[i];
+      box.replaceChildren();
+      box.append(el('h3', null, r.name), el('span', 'when', r.ref));
+      var g = el('div', 'gap2');
+      var a1 = el('div', 'gap-has'), a2 = el('div', 'gap-add');
+      a1.append(el('b', null, '既有研究已有'), el('p', null, r.has));
+      a2.append(el('b', null, '本文補上'), el('p', null, r.gap));
+      g.append(a1, a2);
+      box.append(g);
+    }
+    btns.forEach(function (b) { b.addEventListener('click', function () { show(+b.dataset.pos); }); });
+    show(0);
+  }
+
+  /* ───── 罷免理由書 ───── */
+  function initReasons() {
+    var d = dat('rs-data'), box = $('#rs-detail');
+    if (!d || !box) return;
+    var btns = $$('[data-rs]');
+    function show(i) {
+      btns.forEach(function (b) { b.setAttribute('aria-pressed', +b.dataset.rs === i); });
+      var r = d[i];
+      box.replaceChildren();
+      box.append(el('h3', null, r.code + '　' + r.name),
+                 el('span', 'when', r.grp + '　次數 ' + r.n + '（' + r.pct + '%）　涉及立委 ' + r.k + ' 位'));
+      // 主題項目為原始編碼，逐項不可內部斷行，避免末行只剩一兩字
+      var p = el('p', 'items');
+      r.items.split('、').forEach(function (it, i) {
+        if (i) p.append(document.createTextNode('、'));
+        p.append(el('span', 'it', it));
+      });
+      box.append(p);
+    }
+    btns.forEach(function (b) { b.addEventListener('click', function () { show(+b.dataset.rs); }); });
+    show(0);
+  }
+
+  /* ───── 假設 → 證據 ───── */
+  function initHypo() {
+    var d = dat('hy-data'), box = $('#hy-detail');
+    if (!d || !box) return;
+    var btns = $$('[data-hy]');
+    function show(i) {
+      btns.forEach(function (b) { b.setAttribute('aria-pressed', +b.dataset.hy === i); });
+      var r = d[i];
+      box.replaceChildren();
+      box.append(el('h3', null, r.id + '　' + r.title),
+                 el('span', 'when', r.path),
+                 el('p', null, '檢驗依據：' + r.ev + '。本文模型估計的結論為成立。'));
+    }
+    btns.forEach(function (b) { b.addEventListener('click', function () { show(+b.dataset.hy); }); });
+    show(0);
+  }
+
+  /* ───── 係數圖：標示某一模型 ───── */
+  function initForest() {
+    var btns = $$('[data-fm]').filter(function (b) { return b.tagName === 'BUTTON'; });
+    if (!btns.length) return;
+    var rows = $$('.fr-row');
+    var cur = -1;
+    function show(m) {
+      cur = (cur === m) ? -1 : m;
+      btns.forEach(function (b) { b.setAttribute('aria-pressed', +b.dataset.fm === cur); });
+      rows.forEach(function (r) {
+        var on = cur >= 0 && +r.dataset.fm === cur;
+        r.classList.toggle('hl', on);
+        r.classList.toggle('mute', cur >= 0 && !on);
+      });
+    }
+    btns.forEach(function (b) { b.addEventListener('click', function () { show(+b.dataset.fm); }); });
+  }
+
+  /* ───── KHB ───── */
+  function initKhb() {
+    var d = dat('khb-data'), box = $('#khb-body'), meta = $('#khb-meta');
+    if (!d || !box) return;
+    var st = { camp: '泛綠', metric: 'ie', est: 'mi' };
+    var cb = $$('[data-kcamp]'), mb = $$('[data-kmetric]'), eb = $$('[data-kest]');
+    function render() {
+      cb.forEach(function (b) { b.setAttribute('aria-selected', b.dataset.kcamp === st.camp); });
+      mb.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.kmetric === st.metric); });
+      eb.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.kest === st.est); });
+      var c = d[st.camp][st.est], k = CK[st.camp];
+      box.replaceChildren();
+      var h = el('p', 'chart-title');
+      h.textContent = st.camp + '　總中介效果 β = ' + c.total.beta + '　(' + c.total.se + ')　占總效應 '
+                    + f2(c.total.te) + '%';
+      box.append(h);
+      var wrap = el('div', 'bars');
+      var vals = c.rows.map(function (r) { return r[st.metric]; });
+      var mx = Math.max.apply(null, vals), fills = [];
+      c.rows.forEach(function (r) {
+        var v = r[st.metric];
+        var row = el('div', 'bar-row' + (v === mx ? ' top' : '') + (sig(r.beta) ? '' : ' ns'));
+        row.append(el('span', 'bar-lab', r.name));
+        var tr = el('span', 'bar-track'), fi = el('span', 'bar-fill f-' + k);
+        fi.dataset.w = (v / mx).toFixed(4);
+        tr.append(fi); fills.push(fi);
+        row.append(tr, el('span', 'bar-val', f2(v) + '%'),
+                   el('span', 'bar-beta', r.beta + '　(' + r.se + ')'));
+        wrap.append(row);
+      });
+      box.append(wrap);
+      requestAnimationFrame(function () {
+        fills.forEach(function (f) { f.style.transform = 'scaleX(' + f.dataset.w + ')'; });
+      });
+      if (meta) meta.textContent =
+        (st.metric === 'ie'
+          ? '%IE：該路徑占總中介效果的比例，用於比較同一陣營內各議題的相對重要性。'
+          : '%TE：該路徑占總效應的比例，可跨陣營比較中介強度。')
+        + '　估計策略：' + (st.est === 'mi' ? '多重插補 30 組' : '完全排除法') + '，N=' + c.n
+        + '。淡色長條為未達 p<0.1 的路徑。';
+    }
+    cb.forEach(function (b) { b.addEventListener('click', function () { st.camp = b.dataset.kcamp; render(); }); });
+    mb.forEach(function (b) { b.addEventListener('click', function () { st.metric = b.dataset.kmetric; render(); }); });
+    eb.forEach(function (b) { b.addEventListener('click', function () { st.est = b.dataset.kest; render(); }); });
+    render();
+  }
+
+  /* ───── 表 4 欄位高亮 ───── */
+  function initT4() {
+    var btns = $$('[data-t4col]');
+    if (!btns.length) return;
+    function show(m) {
+      btns.forEach(function (b) { b.setAttribute('aria-selected', +b.dataset.t4col === m); });
+      $$('#t4 tr').forEach(function (tr) {
+        Array.prototype.forEach.call(tr.children, function (c, idx) {
+          c.classList.toggle('colhl', idx === m + 1);
+        });
+      });
+    }
+    btns.forEach(function (b) { b.addEventListener('click', function () { show(+b.dataset.t4col); }); });
+    show(4);
+  }
+
+
+  /* ───── 三陣營摘要 ───── */
+  function initCamp() {
+    var d = dat('cp-data'), box = $('#cp-body');
+    if (!d || !box) return;
+    var btns = $$('[data-cpcamp]');
+    function show(camp) {
+      btns.forEach(function (b) { b.setAttribute('aria-selected', b.dataset.cpcamp === camp); });
+      var c = d[camp], k = CK[camp];
+      box.replaceChildren();
+      var h = el('p', 'chart-title');
+      h.textContent = camp + '　總中介效果 β = ' + c.beta + '　占總效應 ' + f2(c.te) + '%';
+      box.append(h);
+      var wrap = el('div', 'bars'), fills = [];
+      var mx = Math.max.apply(null, c.rows.map(function (r) { return r.ie; }));
+      c.rows.forEach(function (r) {
+        var row = el('div', 'bar-row' + (r.ie === mx ? ' top' : '') + (sig(r.beta) ? '' : ' ns'));
+        row.append(el('span', 'bar-lab', r.name));
+        var tr = el('span', 'bar-track'), fi = el('span', 'bar-fill f-' + k);
+        fi.dataset.w = (r.ie / mx).toFixed(4);
+        tr.append(fi); fills.push(fi);
+        row.append(tr, el('span', 'bar-val', f2(r.ie) + '%'), el('span', 'bar-beta', r.beta));
+        wrap.append(row);
+      });
+      box.append(wrap);
+      requestAnimationFrame(function () {
+        fills.forEach(function (f) { f.style.transform = 'scaleX(' + f.dataset.w + ')'; });
+      });
+    }
+    btns.forEach(function (b) { b.addEventListener('click', function () { show(b.dataset.cpcamp); }); });
+    show('泛綠');
+  }
+
+  window.JP = {
+    boot: function () {
+      [initPD, function () { listFig('tl'); }, function () { listFig('hx'); },
+       initIdeal, initReasons, initHypo, initForest, initKhb, initT4, initCamp, initEra, initPos
+      ].forEach(function (f) { try { f(); } catch (e) { console.error(e); } });
+    },
+    source: function (pages, want, images) {
+      var dlg = $('#src-dlg'), body = $('#src-body'), tog = $('#src-mode');
+      if (!dlg || !body) return;
+      var mode = (images && images.length) ? 'img' : 'text';
+      function render() {
+        body.replaceChildren();
+        want.forEach(function (n) {
+          body.append(el('p', 'pg', '原文第 ' + n + ' 頁'));
+          if (mode === 'img' && images && images[n - 1]) {
+            var im = document.createElement('img');
+            im.className = 'pgimg';
+            im.src = images[n - 1];
+            im.alt = '論文第 ' + n + ' 頁';
+            im.loading = 'lazy';
+            body.append(im);
+          } else {
+            var pre = el('pre');
+            pre.textContent = pages[n - 1] || '（此頁無可擷取文字）';
+            body.append(pre);
+          }
+        });
+        body.scrollTop = 0;
+      }
+      if (tog) {
+        tog.hidden = !(images && images.length);
+        tog.textContent = mode === 'img' ? '切換文字版' : '切換頁面版';
+        tog.onclick = function () {
+          mode = (mode === 'img') ? 'text' : 'img';
+          tog.textContent = mode === 'img' ? '切換文字版' : '切換頁面版';
+          render();
+        };
+      }
+      render();
+      dlg.showModal();
+    }
+  };
+})();
+</script><script>
+var pages=document.querySelectorAll('.page'),N=pages.length,cur=-1;
+var META=[{"title": "政黨認同與大罷免偏好", "pages": [1]}, {"title": "罷免偏好只是政黨認同的投射嗎？", "pages": [2, 3, 5, 22]}, {"title": "理論建構　制度目標 × 驅動邏輯的四種理想型", "pages": [6, 7, 8, 9, 10, 11, 12]}, {"title": "臺灣脈絡 ①　門檻的三個轉折", "pages": [13, 14, 15, 16, 17, 18]}, {"title": "臺灣脈絡 ②　2024–2025 三條議題軸線疊加", "pages": [4, 5, 20, 21]}, {"title": "臺灣脈絡 ③　2025 大罷免是混合型", "pages": [19, 35, 36, 39, 40]}, {"title": "研究設計　投票前一個月的全國調查", "pages": [22, 23, 24, 25, 27, 28]}, {"title": "資料分析 ①　政黨認同的係數被政策態度吸收", "pages": [28, 29, 30, 31]}, {"title": "資料分析 ②　政黨認同如何經由政策態度影響罷免偏好", "pages": [31, 32, 33, 43]}, {"title": "資料分析 ③　中介路徑分解", "pages": [32, 33, 34, 35]}, {"title": "結論 ①　地緣政治的不對稱中介", "pages": [33, 35, 36]}, {"title": "結論 ②　三項潛在困境在發動階段即已浮現", "pages": [37, 38]}, {"title": "研究定位　對誰說話、補了什麼缺口", "pages": [21, 22, 31, 37]}],PG=[],IMG=[];
+var home=document.getElementById('b-home'),prev=document.getElementById('b-prev'),
+    next=document.getElementById('b-next'),rail=document.getElementById('rail');
+function go(n){
+  n=Math.max(0,Math.min(N-1,n));
+  if(n===cur)return;
+  cur=n;
+  for(var i=0;i<N;i++){var on=i===cur;pages[i].classList.toggle('active',on);pages[i].setAttribute('aria-hidden',String(!on));}
+  home.disabled=cur===0;prev.disabled=cur===0;next.disabled=cur===N-1;
+  rail.style.transform='scaleX('+((cur+1)/N)+')';
+  pages[cur].scrollTop=0;
+  history.replaceState(null,'','#p'+cur);
+}
+home.addEventListener('click',function(){go(0)});
+prev.addEventListener('click',function(){go(cur-1)});
+next.addEventListener('click',function(){go(cur+1)});
+document.querySelectorAll('[data-go]').forEach(function(b){
+  b.addEventListener('click',function(){go(+b.dataset.go)});
+});
+function openSrc(){
+  var p=META[cur]&&META[cur].pages&&META[cur].pages.length?META[cur].pages:PG.map(function(_,i){return i+1});
+  JP.source(PG,p,IMG);
+}
+function openAll(){JP.source(PG,PG.map(function(_,i){return i+1}),IMG)}
+var tbtn=document.querySelectorAll('[data-tbl]'),tpane=document.querySelectorAll('[data-pane]');
+function tbl(i){
+  tbtn.forEach(function(b,j){b.setAttribute('aria-selected',j===i)});
+  tpane.forEach(function(p,j){p.classList.toggle('on',j===i)});
+}
+tbtn.forEach(function(b){b.addEventListener('click',function(){tbl(+b.dataset.tbl)})});
+tbl(0);
+function openTbl(){document.getElementById('tbl-dlg').showModal()}
+var HAS_SRC=false;
+if(HAS_SRC){
+  document.getElementById('b-src').addEventListener('click',openSrc);
+  document.getElementById('b-all').addEventListener('click',openAll);
+  document.getElementById('dlg-close').addEventListener('click',function(){document.getElementById('src-dlg').close()});
+  var sd=document.getElementById('src-dlg');
+  sd.addEventListener('click',function(e){if(e.target===this)this.close()});
+}
+document.getElementById('b-tbl').addEventListener('click',openTbl);
+document.getElementById('b-print').addEventListener('click',function(){window.print()});
+document.getElementById('tbl-close').addEventListener('click',function(){document.getElementById('tbl-dlg').close()});
+document.getElementById('tbl-dlg').addEventListener('click',function(e){if(e.target===this)this.close()});
+document.addEventListener('keydown',function(e){
+  var sdl=document.getElementById('src-dlg');
+  if((sdl&&sdl.open)||document.getElementById('tbl-dlg').open)return;
+  var a=document.activeElement,tn=a?a.tagName:'';
+  if(e.metaKey||e.ctrlKey||e.altKey)return;
+  if(tn==='BUTTON'&&(e.key===' '||e.key==='Enter'))return;
+  if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();go(cur+1)}
+  else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(cur-1)}
+  else if(e.key==='Home'){e.preventDefault();go(0)}
+  else if(e.key==='End'){e.preventDefault();go(N-1)}
+  else if((e.key==='o'||e.key==='O')&&HAS_SRC){openSrc()}
+  else if(e.key==='t'||e.key==='T'){openTbl()}
+  else if(e.key==='Escape'){go(0)}
+});
+var tx=null,ty=null;
+document.addEventListener('touchstart',function(e){tx=e.changedTouches[0].clientX;ty=e.changedTouches[0].clientY},{passive:true});
+document.addEventListener('touchend',function(e){
+  if(tx===null)return;
+  if(e.target.closest('button,select,a,.tbl-wrap,dialog')){tx=null;return}
+  var dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;
+  if(Math.abs(dx)>80&&Math.abs(dx)>Math.abs(dy)*1.6)go(cur+(dx<0?1:-1));
+  tx=null;
+},{passive:true});
+function fit(){
+  var box=document.getElementById('deckbox');
+  if(innerWidth<=900){box.style.transform='';return}
+  var s=Math.min(innerWidth/1280,innerHeight/720);
+  box.style.transform='scale('+s+')';
+}
+addEventListener('resize',fit);
+fit();
+JP.boot();
+go(parseInt((location.hash||'').replace('#p',''),10)||0);
+</script>
+</body></html>
